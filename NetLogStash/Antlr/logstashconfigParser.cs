@@ -19,9 +19,6 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
-
-  
-
 using System;
 using System.Text;
 using System.Diagnostics;
@@ -36,46 +33,38 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 [System.CLSCompliant(false)]
 public partial class LogstashconfigParser : Parser {
 	public const int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
-		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
-		T__31=32, T__32=33, NEWLINE=34, WS=35, QUOTED_LITERAL=36, ID=37, DIGIT=38, 
-		INT=39;
+		INPUT=1, FILTER=2, OUTPUT=3, LBRACE=4, RBRACE=5, LPAREN=6, RPAREN=7, LBRACKET=8, 
+		RBRACKET=9, HASHROCKET=10, GT=11, GE=12, LT=13, LE=14, EQ=15, NEQ=16, 
+		BANG=17, COMA=18, IN=19, NOT=20, MATCH=21, NOT_MATCH=22, AND=23, OR=24, 
+		XOR=25, NAND=26, IF=27, ELSE=28, STRING=29, REGEX=30, DECIMAL=31, IDENTIFIER=32, 
+		WS=33, COMMENT=34;
 	public const int
-		RULE_config = 0, RULE_filler = 1, RULE_comment = 2, RULE_plugin_section = 3, 
-		RULE_plugin_type = 4, RULE_branch_or_plugin = 5, RULE_branch = 6, RULE_plugin = 7, 
-		RULE_attributes = 8, RULE_attribute = 9, RULE_r_if = 10, RULE_else_if = 11, 
-		RULE_r_else = 12, RULE_name = 13, RULE_string = 14, RULE_single_quoted_string = 15, 
-		RULE_value = 16, RULE_number = 17, RULE_condition = 18, RULE_expression = 19, 
-		RULE_array = 20, RULE_hash = 21, RULE_hashentries = 22, RULE_hashentry = 23, 
-		RULE_boolean_operator = 24, RULE_negative_expression = 25, RULE_in_expression = 26, 
-		RULE_not_in_expression = 27, RULE_rvalue = 28, RULE_selector = 29, RULE_compare_expression = 30, 
-		RULE_regexp_expression = 31, RULE_selector_element = 32, RULE_in_operator = 33, 
-		RULE_not_in_operator = 34, RULE_method_call = 35, RULE_regexp = 36, RULE_compare_operator = 37, 
-		RULE_regexp_operator = 38;
+		RULE_config = 0, RULE_stage_declaration = 1, RULE_stage_definition = 2, 
+		RULE_plugin_declaration = 3, RULE_plugin_definition = 4, RULE_plugin_attribute = 5, 
+		RULE_plugin_attribute_value = 6, RULE_stage_condition = 7, RULE_logical_expression = 8, 
+		RULE_negative_expression = 9, RULE_compare_expression = 10, RULE_in_expression = 11, 
+		RULE_match_expression = 12, RULE_rvalue = 13, RULE_fieldref = 14, RULE_fieldref_element = 15, 
+		RULE_array = 16, RULE_array_element = 17, RULE_hash = 18, RULE_hash_element = 19;
 	public static readonly string[] ruleNames = {
-		"config", "filler", "comment", "plugin_section", "plugin_type", "branch_or_plugin", 
-		"branch", "plugin", "attributes", "attribute", "r_if", "else_if", "r_else", 
-		"name", "string", "single_quoted_string", "value", "number", "condition", 
-		"expression", "array", "hash", "hashentries", "hashentry", "boolean_operator", 
-		"negative_expression", "in_expression", "not_in_expression", "rvalue", 
-		"selector", "compare_expression", "regexp_expression", "selector_element", 
-		"in_operator", "not_in_operator", "method_call", "regexp", "compare_operator", 
-		"regexp_operator"
+		"config", "stage_declaration", "stage_definition", "plugin_declaration", 
+		"plugin_definition", "plugin_attribute", "plugin_attribute_value", "stage_condition", 
+		"logical_expression", "negative_expression", "compare_expression", "in_expression", 
+		"match_expression", "rvalue", "fieldref", "fieldref_element", "array", 
+		"array_element", "hash", "hash_element"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'#'", "'{'", "'}'", "'input'", "'filter'", "'output'", "'=>'", 
-		"'if'", "'else'", "'''", "'-'", "'.'", "'('", "')'", "'['", "','", "']'", 
-		"'and'", "'or'", "'xor'", "'nand'", "'!'", "'in'", "'not'", "'/'", "'=='", 
-		"'!='", "'<='", "'>='", "'<'", "'>'", "'=~'", "'!~'"
+		null, "'input'", "'filter'", "'output'", "'{'", "'}'", "'('", "')'", "'['", 
+		"']'", "'=>'", "'>'", "'>='", "'<'", "'<='", "'=='", "'!='", "'!'", "','", 
+		"'in'", "'not'", "'=~'", "'!~'", "'and'", "'or'", "'xor'", "'nand'", "'if'", 
+		"'else'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, null, null, null, "NEWLINE", 
-		"WS", "QUOTED_LITERAL", "ID", "DIGIT", "INT"
+		null, "INPUT", "FILTER", "OUTPUT", "LBRACE", "RBRACE", "LPAREN", "RPAREN", 
+		"LBRACKET", "RBRACKET", "HASHROCKET", "GT", "GE", "LT", "LE", "EQ", "NEQ", 
+		"BANG", "COMA", "IN", "NOT", "MATCH", "NOT_MATCH", "AND", "OR", "XOR", 
+		"NAND", "IF", "ELSE", "STRING", "REGEX", "DECIMAL", "IDENTIFIER", "WS", 
+		"COMMENT"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -100,17 +89,12 @@ public partial class LogstashconfigParser : Parser {
 		Interpreter = new ParserATNSimulator(this,_ATN);
 	}
 	public partial class ConfigContext : ParserRuleContext {
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
+		public ITerminalNode Eof() { return GetToken(LogstashconfigParser.Eof, 0); }
+		public Stage_declarationContext[] stage_declaration() {
+			return GetRuleContexts<Stage_declarationContext>();
 		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public Plugin_sectionContext[] plugin_section() {
-			return GetRuleContexts<Plugin_sectionContext>();
-		}
-		public Plugin_sectionContext plugin_section(int i) {
-			return GetRuleContext<Plugin_sectionContext>(i);
+		public Stage_declarationContext stage_declaration(int i) {
+			return GetRuleContext<Stage_declarationContext>(i);
 		}
 		public ConfigContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -136,188 +120,24 @@ public partial class LogstashconfigParser : Parser {
 	public ConfigContext config() {
 		ConfigContext _localctx = new ConfigContext(Context, State);
 		EnterRule(_localctx, 0, RULE_config);
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 78; filler();
-			State = 79; plugin_section();
-			State = 85;
-			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,0,Context);
-			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
-				if ( _alt==1 ) {
-					{
-					{
-					State = 80; filler();
-					State = 81; plugin_section();
-					}
-					} 
-				}
-				State = 87;
-				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,0,Context);
-			}
-			State = 88; filler();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class FillerContext : ParserRuleContext {
-		public CommentContext[] comment() {
-			return GetRuleContexts<CommentContext>();
-		}
-		public CommentContext comment(int i) {
-			return GetRuleContext<CommentContext>(i);
-		}
-		public ITerminalNode[] WS() { return GetTokens(LogstashconfigParser.WS); }
-		public ITerminalNode WS(int i) {
-			return GetToken(LogstashconfigParser.WS, i);
-		}
-		public FillerContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_filler; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterFiller(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitFiller(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitFiller(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public FillerContext filler() {
-		FillerContext _localctx = new FillerContext(Context, State);
-		EnterRule(_localctx, 2, RULE_filler);
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 94;
-			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,2,Context);
-			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
-				if ( _alt==1 ) {
-					{
-					State = 92;
-					switch (TokenStream.La(1)) {
-					case T__0:
-						{
-						State = 90; comment();
-						}
-						break;
-					case WS:
-						{
-						State = 91; Match(WS);
-						}
-						break;
-					default:
-						throw new NoViableAltException(this);
-					}
-					} 
-				}
-				State = 96;
-				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,2,Context);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class CommentContext : ParserRuleContext {
-		public ITerminalNode[] NEWLINE() { return GetTokens(LogstashconfigParser.NEWLINE); }
-		public ITerminalNode NEWLINE(int i) {
-			return GetToken(LogstashconfigParser.NEWLINE, i);
-		}
-		public CommentContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_comment; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterComment(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitComment(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitComment(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public CommentContext comment() {
-		CommentContext _localctx = new CommentContext(Context, State);
-		EnterRule(_localctx, 4, RULE_comment);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 97; Match(T__0);
-			State = 101;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.La(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << T__20) | (1L << T__21) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << T__30) | (1L << T__31) | (1L << T__32) | (1L << WS) | (1L << QUOTED_LITERAL) | (1L << ID) | (1L << DIGIT) | (1L << INT))) != 0)) {
-				{
-				{
-				State = 98;
-				_la = TokenStream.La(1);
-				if ( _la <= 0 || (_la==NEWLINE) ) {
-				ErrorHandler.RecoverInline(this);
-				}
-				else {
-				    Consume();
-				}
-				}
-				}
-				State = 103;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.La(1);
-			}
-			State = 105;
+			State = 41;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.La(1);
 			do {
 				{
 				{
-				State = 104; Match(NEWLINE);
+				State = 40; stage_declaration();
 				}
 				}
-				State = 107;
+				State = 43;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.La(1);
-			} while ( _la==NEWLINE );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INPUT) | (1L << FILTER) | (1L << OUTPUT))) != 0) );
+			State = 45; Match(Eof);
 			}
 		}
 		catch (RecognitionException re) {
@@ -331,119 +151,50 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Plugin_sectionContext : ParserRuleContext {
-		public Plugin_typeContext plugin_type() {
-			return GetRuleContext<Plugin_typeContext>(0);
+	public partial class Stage_declarationContext : ParserRuleContext {
+		public Stage_definitionContext stage_definition() {
+			return GetRuleContext<Stage_definitionContext>(0);
 		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public Branch_or_pluginContext[] branch_or_plugin() {
-			return GetRuleContexts<Branch_or_pluginContext>();
-		}
-		public Branch_or_pluginContext branch_or_plugin(int i) {
-			return GetRuleContext<Branch_or_pluginContext>(i);
-		}
-		public Plugin_sectionContext(ParserRuleContext parent, int invokingState)
+		public ITerminalNode INPUT() { return GetToken(LogstashconfigParser.INPUT, 0); }
+		public ITerminalNode FILTER() { return GetToken(LogstashconfigParser.FILTER, 0); }
+		public ITerminalNode OUTPUT() { return GetToken(LogstashconfigParser.OUTPUT, 0); }
+		public Stage_declarationContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_plugin_section; } }
+		public override int RuleIndex { get { return RULE_stage_declaration; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterPlugin_section(this);
+			if (typedListener != null) typedListener.EnterStage_declaration(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitPlugin_section(this);
+			if (typedListener != null) typedListener.ExitStage_declaration(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitPlugin_section(this);
+			if (typedVisitor != null) return typedVisitor.VisitStage_declaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Plugin_sectionContext plugin_section() {
-		Plugin_sectionContext _localctx = new Plugin_sectionContext(Context, State);
-		EnterRule(_localctx, 6, RULE_plugin_section);
+	public Stage_declarationContext stage_declaration() {
+		Stage_declarationContext _localctx = new Stage_declarationContext(Context, State);
+		EnterRule(_localctx, 2, RULE_stage_declaration);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 109; plugin_type();
-			State = 110; filler();
-			State = 111; Match(T__1);
-			State = 112; filler();
-			State = 118;
-			ErrorHandler.Sync(this);
+			State = 47;
 			_la = TokenStream.La(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__7) | (1L << QUOTED_LITERAL) | (1L << ID))) != 0)) {
-				{
-				{
-				State = 113; branch_or_plugin();
-				State = 114; filler();
-				}
-				}
-				State = 120;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.La(1);
-			}
-			State = 121; Match(T__2);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class Plugin_typeContext : ParserRuleContext {
-		public Plugin_typeContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_plugin_type; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterPlugin_type(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitPlugin_type(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitPlugin_type(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public Plugin_typeContext plugin_type() {
-		Plugin_typeContext _localctx = new Plugin_typeContext(Context, State);
-		EnterRule(_localctx, 8, RULE_plugin_type);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 123;
-			_la = TokenStream.La(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__4) | (1L << T__5))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INPUT) | (1L << FILTER) | (1L << OUTPUT))) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
 			    Consume();
 			}
+			State = 48; stage_definition();
 			}
 		}
 		catch (RecognitionException re) {
@@ -457,418 +208,76 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Branch_or_pluginContext : ParserRuleContext {
-		public BranchContext branch() {
-			return GetRuleContext<BranchContext>(0);
+	public partial class Stage_definitionContext : ParserRuleContext {
+		public ITerminalNode LBRACE() { return GetToken(LogstashconfigParser.LBRACE, 0); }
+		public ITerminalNode RBRACE() { return GetToken(LogstashconfigParser.RBRACE, 0); }
+		public Plugin_declarationContext[] plugin_declaration() {
+			return GetRuleContexts<Plugin_declarationContext>();
 		}
-		public PluginContext plugin() {
-			return GetRuleContext<PluginContext>(0);
+		public Plugin_declarationContext plugin_declaration(int i) {
+			return GetRuleContext<Plugin_declarationContext>(i);
 		}
-		public Branch_or_pluginContext(ParserRuleContext parent, int invokingState)
+		public Stage_conditionContext[] stage_condition() {
+			return GetRuleContexts<Stage_conditionContext>();
+		}
+		public Stage_conditionContext stage_condition(int i) {
+			return GetRuleContext<Stage_conditionContext>(i);
+		}
+		public Stage_definitionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_branch_or_plugin; } }
+		public override int RuleIndex { get { return RULE_stage_definition; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterBranch_or_plugin(this);
+			if (typedListener != null) typedListener.EnterStage_definition(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitBranch_or_plugin(this);
+			if (typedListener != null) typedListener.ExitStage_definition(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBranch_or_plugin(this);
+			if (typedVisitor != null) return typedVisitor.VisitStage_definition(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Branch_or_pluginContext branch_or_plugin() {
-		Branch_or_pluginContext _localctx = new Branch_or_pluginContext(Context, State);
-		EnterRule(_localctx, 10, RULE_branch_or_plugin);
-		try {
-			State = 127;
-			switch (TokenStream.La(1)) {
-			case T__7:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 125; branch();
-				}
-				break;
-			case QUOTED_LITERAL:
-			case ID:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 126; plugin();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class BranchContext : ParserRuleContext {
-		public R_ifContext r_if() {
-			return GetRuleContext<R_ifContext>(0);
-		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public Else_ifContext[] else_if() {
-			return GetRuleContexts<Else_ifContext>();
-		}
-		public Else_ifContext else_if(int i) {
-			return GetRuleContext<Else_ifContext>(i);
-		}
-		public R_elseContext r_else() {
-			return GetRuleContext<R_elseContext>(0);
-		}
-		public BranchContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_branch; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterBranch(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitBranch(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBranch(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public BranchContext branch() {
-		BranchContext _localctx = new BranchContext(Context, State);
-		EnterRule(_localctx, 12, RULE_branch);
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 129; r_if();
-			State = 135;
-			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,7,Context);
-			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
-				if ( _alt==1 ) {
-					{
-					{
-					State = 130; filler();
-					State = 131; else_if();
-					}
-					} 
-				}
-				State = 137;
-				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,7,Context);
-			}
-			State = 141;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,8,Context) ) {
-			case 1:
-				{
-				State = 138; filler();
-				State = 139; r_else();
-				}
-				break;
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class PluginContext : ParserRuleContext {
-		public NameContext name() {
-			return GetRuleContext<NameContext>(0);
-		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public AttributesContext attributes() {
-			return GetRuleContext<AttributesContext>(0);
-		}
-		public PluginContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_plugin; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterPlugin(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitPlugin(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitPlugin(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public PluginContext plugin() {
-		PluginContext _localctx = new PluginContext(Context, State);
-		EnterRule(_localctx, 14, RULE_plugin);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 143; name();
-			State = 144; filler();
-			State = 145; Match(T__1);
-			State = 146; filler();
-			State = 147; attributes();
-			State = 148; filler();
-			State = 149; Match(T__2);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class AttributesContext : ParserRuleContext {
-		public AttributeContext[] attribute() {
-			return GetRuleContexts<AttributeContext>();
-		}
-		public AttributeContext attribute(int i) {
-			return GetRuleContext<AttributeContext>(i);
-		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public AttributesContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_attributes; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterAttributes(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitAttributes(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAttributes(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public AttributesContext attributes() {
-		AttributesContext _localctx = new AttributesContext(Context, State);
-		EnterRule(_localctx, 16, RULE_attributes);
-		int _la;
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 160;
-			_la = TokenStream.La(1);
-			if (_la==QUOTED_LITERAL || _la==ID) {
-				{
-				State = 151; attribute();
-				State = 157;
-				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,9,Context);
-				while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
-					if ( _alt==1 ) {
-						{
-						{
-						State = 152; filler();
-						State = 153; attribute();
-						}
-						} 
-					}
-					State = 159;
-					ErrorHandler.Sync(this);
-					_alt = Interpreter.AdaptivePredict(TokenStream,9,Context);
-				}
-				}
-			}
-
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class AttributeContext : ParserRuleContext {
-		public NameContext name() {
-			return GetRuleContext<NameContext>(0);
-		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public ValueContext value() {
-			return GetRuleContext<ValueContext>(0);
-		}
-		public AttributeContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_attribute; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterAttribute(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitAttribute(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAttribute(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public AttributeContext attribute() {
-		AttributeContext _localctx = new AttributeContext(Context, State);
-		EnterRule(_localctx, 18, RULE_attribute);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 162; name();
-			State = 163; filler();
-			State = 164; Match(T__6);
-			State = 165; filler();
-			State = 166; value();
-			State = 167; filler();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class R_ifContext : ParserRuleContext {
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public ConditionContext condition() {
-			return GetRuleContext<ConditionContext>(0);
-		}
-		public Branch_or_pluginContext[] branch_or_plugin() {
-			return GetRuleContexts<Branch_or_pluginContext>();
-		}
-		public Branch_or_pluginContext branch_or_plugin(int i) {
-			return GetRuleContext<Branch_or_pluginContext>(i);
-		}
-		public R_ifContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_r_if; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterR_if(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitR_if(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitR_if(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public R_ifContext r_if() {
-		R_ifContext _localctx = new R_ifContext(Context, State);
-		EnterRule(_localctx, 20, RULE_r_if);
+	public Stage_definitionContext stage_definition() {
+		Stage_definitionContext _localctx = new Stage_definitionContext(Context, State);
+		EnterRule(_localctx, 4, RULE_stage_definition);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 169; Match(T__7);
-			State = 170; filler();
-			State = 171; condition();
-			State = 172; filler();
-			State = 173; Match(T__1);
-			State = 174; filler();
-			State = 180;
+			State = 50; Match(LBRACE);
+			State = 55;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.La(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__7) | (1L << QUOTED_LITERAL) | (1L << ID))) != 0)) {
+			while (_la==IF || _la==IDENTIFIER) {
 				{
-				{
-				State = 175; branch_or_plugin();
-				State = 176; filler();
+				State = 53;
+				switch (TokenStream.La(1)) {
+				case IDENTIFIER:
+					{
+					State = 51; plugin_declaration();
+					}
+					break;
+				case IF:
+					{
+					State = 52; stage_condition();
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
 				}
 				}
-				State = 182;
+				State = 57;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.La(1);
 			}
-			State = 183; Match(T__2);
+			State = 58; Match(RBRACE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -882,73 +291,105 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Else_ifContext : ParserRuleContext {
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
+	public partial class Plugin_declarationContext : ParserRuleContext {
+		public ITerminalNode IDENTIFIER() { return GetToken(LogstashconfigParser.IDENTIFIER, 0); }
+		public Plugin_definitionContext plugin_definition() {
+			return GetRuleContext<Plugin_definitionContext>(0);
 		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public ConditionContext condition() {
-			return GetRuleContext<ConditionContext>(0);
-		}
-		public Branch_or_pluginContext[] branch_or_plugin() {
-			return GetRuleContexts<Branch_or_pluginContext>();
-		}
-		public Branch_or_pluginContext branch_or_plugin(int i) {
-			return GetRuleContext<Branch_or_pluginContext>(i);
-		}
-		public Else_ifContext(ParserRuleContext parent, int invokingState)
+		public Plugin_declarationContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_else_if; } }
+		public override int RuleIndex { get { return RULE_plugin_declaration; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterElse_if(this);
+			if (typedListener != null) typedListener.EnterPlugin_declaration(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitElse_if(this);
+			if (typedListener != null) typedListener.ExitPlugin_declaration(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitElse_if(this);
+			if (typedVisitor != null) return typedVisitor.VisitPlugin_declaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Else_ifContext else_if() {
-		Else_ifContext _localctx = new Else_ifContext(Context, State);
-		EnterRule(_localctx, 22, RULE_else_if);
+	public Plugin_declarationContext plugin_declaration() {
+		Plugin_declarationContext _localctx = new Plugin_declarationContext(Context, State);
+		EnterRule(_localctx, 6, RULE_plugin_declaration);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 60; Match(IDENTIFIER);
+			State = 61; plugin_definition();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Plugin_definitionContext : ParserRuleContext {
+		public ITerminalNode LBRACE() { return GetToken(LogstashconfigParser.LBRACE, 0); }
+		public ITerminalNode RBRACE() { return GetToken(LogstashconfigParser.RBRACE, 0); }
+		public Plugin_attributeContext[] plugin_attribute() {
+			return GetRuleContexts<Plugin_attributeContext>();
+		}
+		public Plugin_attributeContext plugin_attribute(int i) {
+			return GetRuleContext<Plugin_attributeContext>(i);
+		}
+		public Plugin_definitionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_plugin_definition; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
+			if (typedListener != null) typedListener.EnterPlugin_definition(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
+			if (typedListener != null) typedListener.ExitPlugin_definition(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitPlugin_definition(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Plugin_definitionContext plugin_definition() {
+		Plugin_definitionContext _localctx = new Plugin_definitionContext(Context, State);
+		EnterRule(_localctx, 8, RULE_plugin_definition);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 185; Match(T__8);
-			State = 186; filler();
-			State = 187; Match(T__7);
-			State = 188; filler();
-			State = 189; condition();
-			State = 190; filler();
-			State = 191; Match(T__1);
-			State = 192; filler();
-			State = 198;
+			State = 63; Match(LBRACE);
+			State = 67;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.La(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__7) | (1L << QUOTED_LITERAL) | (1L << ID))) != 0)) {
+			while (_la==IDENTIFIER) {
 				{
 				{
-				State = 193; branch_or_plugin();
-				State = 194; filler();
+				State = 64; plugin_attribute();
 				}
 				}
-				State = 200;
+				State = 69;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.La(1);
 			}
-			State = 201; Match(T__2);
+			State = 70; Match(RBRACE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -962,66 +403,42 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class R_elseContext : ParserRuleContext {
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
+	public partial class Plugin_attributeContext : ParserRuleContext {
+		public ITerminalNode IDENTIFIER() { return GetToken(LogstashconfigParser.IDENTIFIER, 0); }
+		public ITerminalNode HASHROCKET() { return GetToken(LogstashconfigParser.HASHROCKET, 0); }
+		public Plugin_attribute_valueContext plugin_attribute_value() {
+			return GetRuleContext<Plugin_attribute_valueContext>(0);
 		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public Branch_or_pluginContext[] branch_or_plugin() {
-			return GetRuleContexts<Branch_or_pluginContext>();
-		}
-		public Branch_or_pluginContext branch_or_plugin(int i) {
-			return GetRuleContext<Branch_or_pluginContext>(i);
-		}
-		public R_elseContext(ParserRuleContext parent, int invokingState)
+		public Plugin_attributeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_r_else; } }
+		public override int RuleIndex { get { return RULE_plugin_attribute; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterR_else(this);
+			if (typedListener != null) typedListener.EnterPlugin_attribute(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitR_else(this);
+			if (typedListener != null) typedListener.ExitPlugin_attribute(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitR_else(this);
+			if (typedVisitor != null) return typedVisitor.VisitPlugin_attribute(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public R_elseContext r_else() {
-		R_elseContext _localctx = new R_elseContext(Context, State);
-		EnterRule(_localctx, 24, RULE_r_else);
-		int _la;
+	public Plugin_attributeContext plugin_attribute() {
+		Plugin_attributeContext _localctx = new Plugin_attributeContext(Context, State);
+		EnterRule(_localctx, 10, RULE_plugin_attribute);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 203; Match(T__8);
-			State = 204; filler();
-			State = 205; Match(T__1);
-			State = 206; filler();
-			State = 212;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.La(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__7) | (1L << QUOTED_LITERAL) | (1L << ID))) != 0)) {
-				{
-				{
-				State = 207; branch_or_plugin();
-				State = 208; filler();
-				}
-				}
-				State = 214;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.La(1);
-			}
-			State = 215; Match(T__2);
+			State = 72; Match(IDENTIFIER);
+			State = 73; Match(HASHROCKET);
+			State = 74; plugin_attribute_value();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1035,247 +452,81 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class NameContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(LogstashconfigParser.ID, 0); }
-		public StringContext @string() {
-			return GetRuleContext<StringContext>(0);
+	public partial class Plugin_attribute_valueContext : ParserRuleContext {
+		public Plugin_declarationContext plugin_declaration() {
+			return GetRuleContext<Plugin_declarationContext>(0);
 		}
-		public NameContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_name; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterName(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitName(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitName(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public NameContext name() {
-		NameContext _localctx = new NameContext(Context, State);
-		EnterRule(_localctx, 26, RULE_name);
-		try {
-			State = 219;
-			switch (TokenStream.La(1)) {
-			case ID:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 217; Match(ID);
-				}
-				break;
-			case QUOTED_LITERAL:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 218; @string();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class StringContext : ParserRuleContext {
-		public ITerminalNode QUOTED_LITERAL() { return GetToken(LogstashconfigParser.QUOTED_LITERAL, 0); }
-		public StringContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_string; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterString(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitString(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitString(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public StringContext @string() {
-		StringContext _localctx = new StringContext(Context, State);
-		EnterRule(_localctx, 28, RULE_string);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 221; Match(QUOTED_LITERAL);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class Single_quoted_stringContext : ParserRuleContext {
-		public Single_quoted_stringContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_single_quoted_string; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterSingle_quoted_string(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitSingle_quoted_string(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitSingle_quoted_string(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public Single_quoted_stringContext single_quoted_string() {
-		Single_quoted_stringContext _localctx = new Single_quoted_stringContext(Context, State);
-		EnterRule(_localctx, 30, RULE_single_quoted_string);
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 223; Match(T__9);
-			State = 227;
-			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,15,Context);
-			while ( _alt!=1 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
-				if ( _alt==1+1 ) {
-					{
-					{
-					State = 224;
-					MatchWildcard();
-					}
-					} 
-				}
-				State = 229;
-				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,15,Context);
-			}
-			State = 230; Match(T__9);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ValueContext : ParserRuleContext {
-		public PluginContext plugin() {
-			return GetRuleContext<PluginContext>(0);
-		}
-		public ITerminalNode ID() { return GetToken(LogstashconfigParser.ID, 0); }
-		public StringContext @string() {
-			return GetRuleContext<StringContext>(0);
-		}
-		public NumberContext number() {
-			return GetRuleContext<NumberContext>(0);
-		}
+		public ITerminalNode IDENTIFIER() { return GetToken(LogstashconfigParser.IDENTIFIER, 0); }
+		public ITerminalNode STRING() { return GetToken(LogstashconfigParser.STRING, 0); }
+		public ITerminalNode DECIMAL() { return GetToken(LogstashconfigParser.DECIMAL, 0); }
 		public ArrayContext array() {
 			return GetRuleContext<ArrayContext>(0);
 		}
 		public HashContext hash() {
 			return GetRuleContext<HashContext>(0);
 		}
-		public ValueContext(ParserRuleContext parent, int invokingState)
+		public Plugin_attribute_valueContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_value; } }
+		public override int RuleIndex { get { return RULE_plugin_attribute_value; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterValue(this);
+			if (typedListener != null) typedListener.EnterPlugin_attribute_value(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitValue(this);
+			if (typedListener != null) typedListener.ExitPlugin_attribute_value(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitValue(this);
+			if (typedVisitor != null) return typedVisitor.VisitPlugin_attribute_value(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public ValueContext value() {
-		ValueContext _localctx = new ValueContext(Context, State);
-		EnterRule(_localctx, 32, RULE_value);
+	public Plugin_attribute_valueContext plugin_attribute_value() {
+		Plugin_attribute_valueContext _localctx = new Plugin_attribute_valueContext(Context, State);
+		EnterRule(_localctx, 12, RULE_plugin_attribute_value);
 		try {
-			State = 238;
+			State = 82;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,16,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,4,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 232; plugin();
+				State = 76; plugin_declaration();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 233; Match(ID);
+				State = 77; Match(IDENTIFIER);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 234; @string();
+				State = 78; Match(STRING);
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 235; number();
+				State = 79; Match(DECIMAL);
 				}
 				break;
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 236; array();
+				State = 80; array();
 				}
 				break;
 			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 237; hash();
+				State = 81; hash();
 				}
 				break;
 			}
@@ -1291,160 +542,86 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class NumberContext : ParserRuleContext {
-		public ITerminalNode[] DIGIT() { return GetTokens(LogstashconfigParser.DIGIT); }
-		public ITerminalNode DIGIT(int i) {
-			return GetToken(LogstashconfigParser.DIGIT, i);
+	public partial class Stage_conditionContext : ParserRuleContext {
+		public ITerminalNode[] IF() { return GetTokens(LogstashconfigParser.IF); }
+		public ITerminalNode IF(int i) {
+			return GetToken(LogstashconfigParser.IF, i);
 		}
-		public NumberContext(ParserRuleContext parent, int invokingState)
+		public Logical_expressionContext[] logical_expression() {
+			return GetRuleContexts<Logical_expressionContext>();
+		}
+		public Logical_expressionContext logical_expression(int i) {
+			return GetRuleContext<Logical_expressionContext>(i);
+		}
+		public Stage_definitionContext[] stage_definition() {
+			return GetRuleContexts<Stage_definitionContext>();
+		}
+		public Stage_definitionContext stage_definition(int i) {
+			return GetRuleContext<Stage_definitionContext>(i);
+		}
+		public ITerminalNode[] ELSE() { return GetTokens(LogstashconfigParser.ELSE); }
+		public ITerminalNode ELSE(int i) {
+			return GetToken(LogstashconfigParser.ELSE, i);
+		}
+		public Stage_conditionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_number; } }
+		public override int RuleIndex { get { return RULE_stage_condition; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterNumber(this);
+			if (typedListener != null) typedListener.EnterStage_condition(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitNumber(this);
+			if (typedListener != null) typedListener.ExitStage_condition(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitNumber(this);
+			if (typedVisitor != null) return typedVisitor.VisitStage_condition(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public NumberContext number() {
-		NumberContext _localctx = new NumberContext(Context, State);
-		EnterRule(_localctx, 34, RULE_number);
+	public Stage_conditionContext stage_condition() {
+		Stage_conditionContext _localctx = new Stage_conditionContext(Context, State);
+		EnterRule(_localctx, 14, RULE_stage_condition);
 		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 241;
-			_la = TokenStream.La(1);
-			if (_la==T__10) {
-				{
-				State = 240; Match(T__10);
-				}
-			}
-
-			State = 244;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.La(1);
-			do {
-				{
-				{
-				State = 243; Match(DIGIT);
-				}
-				}
-				State = 246;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.La(1);
-			} while ( _la==DIGIT );
-			State = 255;
-			_la = TokenStream.La(1);
-			if (_la==T__11) {
-				{
-				State = 248; Match(T__11);
-				State = 252;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.La(1);
-				while (_la==DIGIT) {
-					{
-					{
-					State = 249; Match(DIGIT);
-					}
-					}
-					State = 254;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.La(1);
-				}
-				}
-			}
-
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ConditionContext : ParserRuleContext {
-		public ExpressionContext[] expression() {
-			return GetRuleContexts<ExpressionContext>();
-		}
-		public ExpressionContext expression(int i) {
-			return GetRuleContext<ExpressionContext>(i);
-		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public Boolean_operatorContext[] boolean_operator() {
-			return GetRuleContexts<Boolean_operatorContext>();
-		}
-		public Boolean_operatorContext boolean_operator(int i) {
-			return GetRuleContext<Boolean_operatorContext>(i);
-		}
-		public ConditionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_condition; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterCondition(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitCondition(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCondition(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ConditionContext condition() {
-		ConditionContext _localctx = new ConditionContext(Context, State);
-		EnterRule(_localctx, 36, RULE_condition);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 257; expression();
-			State = 265;
+			State = 84; Match(IF);
+			State = 85; logical_expression(0);
+			State = 86; stage_definition();
+			State = 94;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,21,Context);
+			_alt = Interpreter.AdaptivePredict(TokenStream,5,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
 				if ( _alt==1 ) {
 					{
 					{
-					State = 258; filler();
-					State = 259; boolean_operator();
-					State = 260; filler();
-					State = 261; expression();
+					State = 87; Match(ELSE);
+					State = 88; Match(IF);
+					State = 89; logical_expression(0);
+					State = 90; stage_definition();
 					}
 					} 
 				}
-				State = 267;
+				State = 96;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,21,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,5,Context);
 			}
+			State = 99;
+			_la = TokenStream.La(1);
+			if (_la==ELSE) {
+				{
+				State = 97; Match(ELSE);
+				State = 98; stage_definition();
+				}
+			}
+
 			}
 		}
 		catch (RecognitionException re) {
@@ -1458,335 +635,165 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class ExpressionContext : ParserRuleContext {
-		public Negative_expressionContext negative_expression() {
-			return GetRuleContext<Negative_expressionContext>(0);
+	public partial class Logical_expressionContext : ParserRuleContext {
+		public Compare_expressionContext compare_expression() {
+			return GetRuleContext<Compare_expressionContext>(0);
 		}
 		public In_expressionContext in_expression() {
 			return GetRuleContext<In_expressionContext>(0);
 		}
-		public Not_in_expressionContext not_in_expression() {
-			return GetRuleContext<Not_in_expressionContext>(0);
+		public Match_expressionContext match_expression() {
+			return GetRuleContext<Match_expressionContext>(0);
 		}
-		public Compare_expressionContext compare_expression() {
-			return GetRuleContext<Compare_expressionContext>(0);
+		public Negative_expressionContext negative_expression() {
+			return GetRuleContext<Negative_expressionContext>(0);
 		}
-		public Regexp_expressionContext regexp_expression() {
-			return GetRuleContext<Regexp_expressionContext>(0);
+		public ITerminalNode LPAREN() { return GetToken(LogstashconfigParser.LPAREN, 0); }
+		public Logical_expressionContext[] logical_expression() {
+			return GetRuleContexts<Logical_expressionContext>();
 		}
+		public Logical_expressionContext logical_expression(int i) {
+			return GetRuleContext<Logical_expressionContext>(i);
+		}
+		public ITerminalNode RPAREN() { return GetToken(LogstashconfigParser.RPAREN, 0); }
 		public RvalueContext rvalue() {
 			return GetRuleContext<RvalueContext>(0);
 		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public ConditionContext condition() {
-			return GetRuleContext<ConditionContext>(0);
-		}
-		public ExpressionContext(ParserRuleContext parent, int invokingState)
+		public ITerminalNode AND() { return GetToken(LogstashconfigParser.AND, 0); }
+		public ITerminalNode OR() { return GetToken(LogstashconfigParser.OR, 0); }
+		public ITerminalNode NAND() { return GetToken(LogstashconfigParser.NAND, 0); }
+		public ITerminalNode XOR() { return GetToken(LogstashconfigParser.XOR, 0); }
+		public Logical_expressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_expression; } }
+		public override int RuleIndex { get { return RULE_logical_expression; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterExpression(this);
+			if (typedListener != null) typedListener.EnterLogical_expression(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitExpression(this);
+			if (typedListener != null) typedListener.ExitLogical_expression(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitLogical_expression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public ExpressionContext expression() {
-		ExpressionContext _localctx = new ExpressionContext(Context, State);
-		EnterRule(_localctx, 38, RULE_expression);
+	public Logical_expressionContext logical_expression() {
+		return logical_expression(0);
+	}
+
+	private Logical_expressionContext logical_expression(int _p) {
+		ParserRuleContext _parentctx = Context;
+		int _parentState = State;
+		Logical_expressionContext _localctx = new Logical_expressionContext(Context, _parentState);
+		Logical_expressionContext _prevctx = _localctx;
+		int _startState = 16;
+		EnterRecursionRule(_localctx, 16, RULE_logical_expression, _p);
 		try {
+			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 280;
+			State = 111;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,22,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,7,Context) ) {
 			case 1:
 				{
-				{
-				State = 268; Match(T__12);
-				State = 269; filler();
-				State = 270; condition();
-				State = 271; filler();
-				State = 272; Match(T__13);
-				}
+				State = 102; compare_expression();
 				}
 				break;
 			case 2:
 				{
-				State = 274; negative_expression();
+				State = 103; in_expression();
 				}
 				break;
 			case 3:
 				{
-				State = 275; in_expression();
+				State = 104; match_expression();
 				}
 				break;
 			case 4:
 				{
-				State = 276; not_in_expression();
+				State = 105; negative_expression();
 				}
 				break;
 			case 5:
 				{
-				State = 277; compare_expression();
+				State = 106; Match(LPAREN);
+				State = 107; logical_expression(0);
+				State = 108; Match(RPAREN);
 				}
 				break;
 			case 6:
 				{
-				State = 278; regexp_expression();
-				}
-				break;
-			case 7:
-				{
-				State = 279; rvalue();
+				State = 110; rvalue();
 				}
 				break;
 			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ArrayContext : ParserRuleContext {
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public ValueContext[] value() {
-			return GetRuleContexts<ValueContext>();
-		}
-		public ValueContext value(int i) {
-			return GetRuleContext<ValueContext>(i);
-		}
-		public ArrayContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_array; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterArray(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitArray(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitArray(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ArrayContext array() {
-		ArrayContext _localctx = new ArrayContext(Context, State);
-		EnterRule(_localctx, 40, RULE_array);
-		int _la;
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 282; Match(T__14);
-			State = 283; filler();
-			State = 295;
-			_la = TokenStream.La(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__10) | (1L << T__14) | (1L << QUOTED_LITERAL) | (1L << ID) | (1L << DIGIT))) != 0)) {
-				{
-				State = 284; value();
-				State = 292;
-				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,23,Context);
-				while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
-					if ( _alt==1 ) {
-						{
-						{
-						State = 285; filler();
-						State = 286; Match(T__15);
-						State = 287; filler();
-						State = 288; value();
-						}
-						} 
-					}
-					State = 294;
-					ErrorHandler.Sync(this);
-					_alt = Interpreter.AdaptivePredict(TokenStream,23,Context);
-				}
-				}
-			}
-
-			State = 297; filler();
-			State = 298; Match(T__16);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class HashContext : ParserRuleContext {
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public HashentriesContext hashentries() {
-			return GetRuleContext<HashentriesContext>(0);
-		}
-		public HashContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_hash; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterHash(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitHash(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitHash(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public HashContext hash() {
-		HashContext _localctx = new HashContext(Context, State);
-		EnterRule(_localctx, 42, RULE_hash);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 300; Match(T__1);
-			State = 301; filler();
-			State = 303;
-			_la = TokenStream.La(1);
-			if (_la==QUOTED_LITERAL || _la==ID) {
-				{
-				State = 302; hashentries();
-				}
-			}
-
-			State = 305; filler();
-			State = 306; Match(T__2);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class HashentriesContext : ParserRuleContext {
-		public HashentryContext[] hashentry() {
-			return GetRuleContexts<HashentryContext>();
-		}
-		public HashentryContext hashentry(int i) {
-			return GetRuleContext<HashentryContext>(i);
-		}
-		public ITerminalNode[] WS() { return GetTokens(LogstashconfigParser.WS); }
-		public ITerminalNode WS(int i) {
-			return GetToken(LogstashconfigParser.WS, i);
-		}
-		public HashentriesContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_hashentries; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterHashentries(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitHashentries(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitHashentries(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public HashentriesContext hashentries() {
-		HashentriesContext _localctx = new HashentriesContext(Context, State);
-		EnterRule(_localctx, 44, RULE_hashentries);
-		int _la;
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 308; hashentry();
-			State = 318;
+			Context.Stop = TokenStream.Lt(-1);
+			State = 127;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,27,Context);
+			_alt = Interpreter.AdaptivePredict(TokenStream,9,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
 				if ( _alt==1 ) {
+					if ( ParseListeners!=null )
+						TriggerExitRuleEvent();
+					_prevctx = _localctx;
 					{
-					{
-					State = 312;
+					State = 125;
 					ErrorHandler.Sync(this);
-					_la = TokenStream.La(1);
-					while (_la==WS) {
+					switch ( Interpreter.AdaptivePredict(TokenStream,8,Context) ) {
+					case 1:
 						{
+						_localctx = new Logical_expressionContext(_parentctx, _parentState);
+						PushNewRecursionContext(_localctx, _startState, RULE_logical_expression);
+						State = 113;
+						if (!(Precpred(Context, 10))) throw new FailedPredicateException(this, "Precpred(Context, 10)");
+						State = 114; Match(AND);
+						State = 115; logical_expression(11);
+						}
+						break;
+					case 2:
 						{
-						State = 309; Match(WS);
+						_localctx = new Logical_expressionContext(_parentctx, _parentState);
+						PushNewRecursionContext(_localctx, _startState, RULE_logical_expression);
+						State = 116;
+						if (!(Precpred(Context, 9))) throw new FailedPredicateException(this, "Precpred(Context, 9)");
+						State = 117; Match(OR);
+						State = 118; logical_expression(10);
 						}
+						break;
+					case 3:
+						{
+						_localctx = new Logical_expressionContext(_parentctx, _parentState);
+						PushNewRecursionContext(_localctx, _startState, RULE_logical_expression);
+						State = 119;
+						if (!(Precpred(Context, 8))) throw new FailedPredicateException(this, "Precpred(Context, 8)");
+						State = 120; Match(NAND);
+						State = 121; logical_expression(9);
 						}
-						State = 314;
-						ErrorHandler.Sync(this);
-						_la = TokenStream.La(1);
-					}
-					State = 315; hashentry();
+						break;
+					case 4:
+						{
+						_localctx = new Logical_expressionContext(_parentctx, _parentState);
+						PushNewRecursionContext(_localctx, _startState, RULE_logical_expression);
+						State = 122;
+						if (!(Precpred(Context, 7))) throw new FailedPredicateException(this, "Precpred(Context, 7)");
+						State = 123; Match(XOR);
+						State = 124; logical_expression(8);
+						}
+						break;
 					}
 					} 
 				}
-				State = 320;
+				State = 129;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,27,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,9,Context);
 			}
 			}
 		}
@@ -1796,132 +803,18 @@ public partial class LogstashconfigParser : Parser {
 			ErrorHandler.Recover(this, re);
 		}
 		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class HashentryContext : ParserRuleContext {
-		public NameContext name() {
-			return GetRuleContext<NameContext>(0);
-		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public ValueContext value() {
-			return GetRuleContext<ValueContext>(0);
-		}
-		public HashentryContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_hashentry; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterHashentry(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitHashentry(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitHashentry(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public HashentryContext hashentry() {
-		HashentryContext _localctx = new HashentryContext(Context, State);
-		EnterRule(_localctx, 46, RULE_hashentry);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 321; name();
-			State = 322; filler();
-			State = 323; Match(T__6);
-			State = 324; filler();
-			State = 325; value();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class Boolean_operatorContext : ParserRuleContext {
-		public Boolean_operatorContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_boolean_operator; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterBoolean_operator(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitBoolean_operator(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBoolean_operator(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public Boolean_operatorContext boolean_operator() {
-		Boolean_operatorContext _localctx = new Boolean_operatorContext(Context, State);
-		EnterRule(_localctx, 48, RULE_boolean_operator);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 327;
-			_la = TokenStream.La(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << T__20))) != 0)) ) {
-			ErrorHandler.RecoverInline(this);
-			}
-			else {
-			    Consume();
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
+			UnrollRecursionContexts(_parentctx);
 		}
 		return _localctx;
 	}
 
 	public partial class Negative_expressionContext : ParserRuleContext {
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
+		public ITerminalNode BANG() { return GetToken(LogstashconfigParser.BANG, 0); }
+		public ITerminalNode LPAREN() { return GetToken(LogstashconfigParser.LPAREN, 0); }
+		public Logical_expressionContext logical_expression() {
+			return GetRuleContext<Logical_expressionContext>(0);
 		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public ConditionContext condition() {
-			return GetRuleContext<ConditionContext>(0);
-		}
-		public SelectorContext selector() {
-			return GetRuleContext<SelectorContext>(0);
-		}
+		public ITerminalNode RPAREN() { return GetToken(LogstashconfigParser.RPAREN, 0); }
 		public Negative_expressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -1945,36 +838,116 @@ public partial class LogstashconfigParser : Parser {
 	[RuleVersion(0)]
 	public Negative_expressionContext negative_expression() {
 		Negative_expressionContext _localctx = new Negative_expressionContext(Context, State);
-		EnterRule(_localctx, 50, RULE_negative_expression);
+		EnterRule(_localctx, 18, RULE_negative_expression);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 341;
+			State = 130; Match(BANG);
+			State = 131; Match(LPAREN);
+			State = 132; logical_expression(0);
+			State = 133; Match(RPAREN);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Compare_expressionContext : ParserRuleContext {
+		public RvalueContext[] rvalue() {
+			return GetRuleContexts<RvalueContext>();
+		}
+		public RvalueContext rvalue(int i) {
+			return GetRuleContext<RvalueContext>(i);
+		}
+		public ITerminalNode GT() { return GetToken(LogstashconfigParser.GT, 0); }
+		public ITerminalNode GE() { return GetToken(LogstashconfigParser.GE, 0); }
+		public ITerminalNode LT() { return GetToken(LogstashconfigParser.LT, 0); }
+		public ITerminalNode LE() { return GetToken(LogstashconfigParser.LE, 0); }
+		public ITerminalNode EQ() { return GetToken(LogstashconfigParser.EQ, 0); }
+		public ITerminalNode NEQ() { return GetToken(LogstashconfigParser.NEQ, 0); }
+		public Compare_expressionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_compare_expression; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
+			if (typedListener != null) typedListener.EnterCompare_expression(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
+			if (typedListener != null) typedListener.ExitCompare_expression(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCompare_expression(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Compare_expressionContext compare_expression() {
+		Compare_expressionContext _localctx = new Compare_expressionContext(Context, State);
+		EnterRule(_localctx, 20, RULE_compare_expression);
+		try {
+			State = 159;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,28,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,10,Context) ) {
 			case 1:
+				EnterOuterAlt(_localctx, 1);
 				{
-				{
-				State = 329; Match(T__21);
-				State = 330; filler();
-				State = 331; Match(T__12);
-				State = 332; filler();
-				State = 333; condition();
-				State = 334; filler();
-				State = 335; Match(T__13);
-				}
+				State = 135; rvalue();
+				State = 136; Match(GT);
+				State = 137; rvalue();
 				}
 				break;
 			case 2:
+				EnterOuterAlt(_localctx, 2);
 				{
-				{
-				State = 337; Match(T__21);
-				State = 338; filler();
-				State = 339; selector();
-				}
+				State = 139; rvalue();
+				State = 140; Match(GE);
+				State = 141; rvalue();
 				}
 				break;
-			}
+			case 3:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 143; rvalue();
+				State = 144; Match(LT);
+				State = 145; rvalue();
+				}
+				break;
+			case 4:
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 147; rvalue();
+				State = 148; Match(LE);
+				State = 149; rvalue();
+				}
+				break;
+			case 5:
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 151; rvalue();
+				State = 152; Match(EQ);
+				State = 153; rvalue();
+				}
+				break;
+			case 6:
+				EnterOuterAlt(_localctx, 6);
+				{
+				State = 155; rvalue();
+				State = 156; Match(NEQ);
+				State = 157; rvalue();
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -1995,15 +968,8 @@ public partial class LogstashconfigParser : Parser {
 		public RvalueContext rvalue(int i) {
 			return GetRuleContext<RvalueContext>(i);
 		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public In_operatorContext in_operator() {
-			return GetRuleContext<In_operatorContext>(0);
-		}
+		public ITerminalNode IN() { return GetToken(LogstashconfigParser.IN, 0); }
+		public ITerminalNode NOT() { return GetToken(LogstashconfigParser.NOT, 0); }
 		public In_expressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -2027,15 +993,22 @@ public partial class LogstashconfigParser : Parser {
 	[RuleVersion(0)]
 	public In_expressionContext in_expression() {
 		In_expressionContext _localctx = new In_expressionContext(Context, State);
-		EnterRule(_localctx, 52, RULE_in_expression);
+		EnterRule(_localctx, 22, RULE_in_expression);
+		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 343; rvalue();
-			State = 344; filler();
-			State = 345; in_operator();
-			State = 346; filler();
-			State = 347; rvalue();
+			State = 161; rvalue();
+			State = 163;
+			_la = TokenStream.La(1);
+			if (_la==NOT) {
+				{
+				State = 162; Match(NOT);
+				}
+			}
+
+			State = 165; Match(IN);
+			State = 166; rvalue();
 			}
 		}
 		catch (RecognitionException re) {
@@ -2049,54 +1022,59 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Not_in_expressionContext : ParserRuleContext {
-		public RvalueContext[] rvalue() {
-			return GetRuleContexts<RvalueContext>();
+	public partial class Match_expressionContext : ParserRuleContext {
+		public RvalueContext rvalue() {
+			return GetRuleContext<RvalueContext>(0);
 		}
-		public RvalueContext rvalue(int i) {
-			return GetRuleContext<RvalueContext>(i);
-		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public Not_in_operatorContext not_in_operator() {
-			return GetRuleContext<Not_in_operatorContext>(0);
-		}
-		public Not_in_expressionContext(ParserRuleContext parent, int invokingState)
+		public ITerminalNode MATCH() { return GetToken(LogstashconfigParser.MATCH, 0); }
+		public ITerminalNode NOT_MATCH() { return GetToken(LogstashconfigParser.NOT_MATCH, 0); }
+		public ITerminalNode STRING() { return GetToken(LogstashconfigParser.STRING, 0); }
+		public ITerminalNode REGEX() { return GetToken(LogstashconfigParser.REGEX, 0); }
+		public Match_expressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_not_in_expression; } }
+		public override int RuleIndex { get { return RULE_match_expression; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterNot_in_expression(this);
+			if (typedListener != null) typedListener.EnterMatch_expression(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitNot_in_expression(this);
+			if (typedListener != null) typedListener.ExitMatch_expression(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitNot_in_expression(this);
+			if (typedVisitor != null) return typedVisitor.VisitMatch_expression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Not_in_expressionContext not_in_expression() {
-		Not_in_expressionContext _localctx = new Not_in_expressionContext(Context, State);
-		EnterRule(_localctx, 54, RULE_not_in_expression);
+	public Match_expressionContext match_expression() {
+		Match_expressionContext _localctx = new Match_expressionContext(Context, State);
+		EnterRule(_localctx, 24, RULE_match_expression);
+		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 349; rvalue();
-			State = 350; filler();
-			State = 351; not_in_operator();
-			State = 352; filler();
-			State = 353; rvalue();
+			State = 168; rvalue();
+			State = 169;
+			_la = TokenStream.La(1);
+			if ( !(_la==MATCH || _la==NOT_MATCH) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+			    Consume();
+			}
+			State = 170;
+			_la = TokenStream.La(1);
+			if ( !(_la==STRING || _la==REGEX) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+			    Consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -2111,23 +1089,13 @@ public partial class LogstashconfigParser : Parser {
 	}
 
 	public partial class RvalueContext : ParserRuleContext {
-		public StringContext @string() {
-			return GetRuleContext<StringContext>(0);
-		}
-		public NumberContext number() {
-			return GetRuleContext<NumberContext>(0);
-		}
-		public SelectorContext selector() {
-			return GetRuleContext<SelectorContext>(0);
+		public ITerminalNode STRING() { return GetToken(LogstashconfigParser.STRING, 0); }
+		public ITerminalNode DECIMAL() { return GetToken(LogstashconfigParser.DECIMAL, 0); }
+		public FieldrefContext fieldref() {
+			return GetRuleContext<FieldrefContext>(0);
 		}
 		public ArrayContext array() {
 			return GetRuleContext<ArrayContext>(0);
-		}
-		public Method_callContext method_call() {
-			return GetRuleContext<Method_callContext>(0);
-		}
-		public RegexpContext regexp() {
-			return GetRuleContext<RegexpContext>(0);
 		}
 		public RvalueContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -2152,45 +1120,33 @@ public partial class LogstashconfigParser : Parser {
 	[RuleVersion(0)]
 	public RvalueContext rvalue() {
 		RvalueContext _localctx = new RvalueContext(Context, State);
-		EnterRule(_localctx, 56, RULE_rvalue);
+		EnterRule(_localctx, 26, RULE_rvalue);
 		try {
-			State = 361;
+			State = 176;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,29,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,12,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 355; @string();
+				State = 172; Match(STRING);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 356; number();
+				State = 173; Match(DECIMAL);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 357; selector();
+				State = 174; fieldref();
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 358; array();
-				}
-				break;
-			case 5:
-				EnterOuterAlt(_localctx, 5);
-				{
-				State = 359; method_call();
-				}
-				break;
-			case 6:
-				EnterOuterAlt(_localctx, 6);
-				{
-				State = 360; regexp();
+				State = 175; array();
 				}
 				break;
 			}
@@ -2206,257 +1162,60 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class SelectorContext : ParserRuleContext {
-		public Selector_elementContext[] selector_element() {
-			return GetRuleContexts<Selector_elementContext>();
+	public partial class FieldrefContext : ParserRuleContext {
+		public Fieldref_elementContext[] fieldref_element() {
+			return GetRuleContexts<Fieldref_elementContext>();
 		}
-		public Selector_elementContext selector_element(int i) {
-			return GetRuleContext<Selector_elementContext>(i);
+		public Fieldref_elementContext fieldref_element(int i) {
+			return GetRuleContext<Fieldref_elementContext>(i);
 		}
-		public SelectorContext(ParserRuleContext parent, int invokingState)
+		public FieldrefContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_selector; } }
+		public override int RuleIndex { get { return RULE_fieldref; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterSelector(this);
+			if (typedListener != null) typedListener.EnterFieldref(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitSelector(this);
+			if (typedListener != null) typedListener.ExitFieldref(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitSelector(this);
+			if (typedVisitor != null) return typedVisitor.VisitFieldref(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public SelectorContext selector() {
-		SelectorContext _localctx = new SelectorContext(Context, State);
-		EnterRule(_localctx, 58, RULE_selector);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 364;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.La(1);
-			do {
-				{
-				{
-				State = 363; selector_element();
-				}
-				}
-				State = 366;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.La(1);
-			} while ( _la==T__14 );
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class Compare_expressionContext : ParserRuleContext {
-		public RvalueContext[] rvalue() {
-			return GetRuleContexts<RvalueContext>();
-		}
-		public RvalueContext rvalue(int i) {
-			return GetRuleContext<RvalueContext>(i);
-		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public Compare_operatorContext compare_operator() {
-			return GetRuleContext<Compare_operatorContext>(0);
-		}
-		public Compare_expressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_compare_expression; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterCompare_expression(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitCompare_expression(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCompare_expression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public Compare_expressionContext compare_expression() {
-		Compare_expressionContext _localctx = new Compare_expressionContext(Context, State);
-		EnterRule(_localctx, 60, RULE_compare_expression);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 368; rvalue();
-			State = 369; filler();
-			State = 370; compare_operator();
-			State = 371; filler();
-			State = 372; rvalue();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class Regexp_expressionContext : ParserRuleContext {
-		public RvalueContext rvalue() {
-			return GetRuleContext<RvalueContext>(0);
-		}
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public Regexp_operatorContext regexp_operator() {
-			return GetRuleContext<Regexp_operatorContext>(0);
-		}
-		public StringContext @string() {
-			return GetRuleContext<StringContext>(0);
-		}
-		public RegexpContext regexp() {
-			return GetRuleContext<RegexpContext>(0);
-		}
-		public Regexp_expressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_regexp_expression; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterRegexp_expression(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitRegexp_expression(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitRegexp_expression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public Regexp_expressionContext regexp_expression() {
-		Regexp_expressionContext _localctx = new Regexp_expressionContext(Context, State);
-		EnterRule(_localctx, 62, RULE_regexp_expression);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 374; rvalue();
-			State = 375; filler();
-			State = 376; regexp_operator();
-			State = 377; filler();
-			State = 380;
-			switch (TokenStream.La(1)) {
-			case QUOTED_LITERAL:
-				{
-				State = 378; @string();
-				}
-				break;
-			case T__24:
-				{
-				State = 379; regexp();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class Selector_elementContext : ParserRuleContext {
-		public Selector_elementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_selector_element; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterSelector_element(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitSelector_element(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitSelector_element(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public Selector_elementContext selector_element() {
-		Selector_elementContext _localctx = new Selector_elementContext(Context, State);
-		EnterRule(_localctx, 64, RULE_selector_element);
+	public FieldrefContext fieldref() {
+		FieldrefContext _localctx = new FieldrefContext(Context, State);
+		EnterRule(_localctx, 28, RULE_fieldref);
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 382; Match(T__14);
-			State = 384;
+			State = 179;
 			ErrorHandler.Sync(this);
-			_alt = 1+1;
+			_alt = 1;
 			do {
 				switch (_alt) {
-				case 1+1:
+				case 1:
 					{
 					{
-					State = 383;
-					MatchWildcard();
+					State = 178; fieldref_element();
 					}
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
-				State = 386;
+				State = 181;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,32,Context);
-			} while ( _alt!=1 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber );
-			State = 388; Match(T__16);
+				_alt = Interpreter.AdaptivePredict(TokenStream,13,Context);
+			} while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber );
 			}
 		}
 		catch (RecognitionException re) {
@@ -2470,35 +1229,40 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class In_operatorContext : ParserRuleContext {
-		public In_operatorContext(ParserRuleContext parent, int invokingState)
+	public partial class Fieldref_elementContext : ParserRuleContext {
+		public ITerminalNode LBRACKET() { return GetToken(LogstashconfigParser.LBRACKET, 0); }
+		public ITerminalNode IDENTIFIER() { return GetToken(LogstashconfigParser.IDENTIFIER, 0); }
+		public ITerminalNode RBRACKET() { return GetToken(LogstashconfigParser.RBRACKET, 0); }
+		public Fieldref_elementContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_in_operator; } }
+		public override int RuleIndex { get { return RULE_fieldref_element; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterIn_operator(this);
+			if (typedListener != null) typedListener.EnterFieldref_element(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitIn_operator(this);
+			if (typedListener != null) typedListener.ExitFieldref_element(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitIn_operator(this);
+			if (typedVisitor != null) return typedVisitor.VisitFieldref_element(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public In_operatorContext in_operator() {
-		In_operatorContext _localctx = new In_operatorContext(Context, State);
-		EnterRule(_localctx, 66, RULE_in_operator);
+	public Fieldref_elementContext fieldref_element() {
+		Fieldref_elementContext _localctx = new Fieldref_elementContext(Context, State);
+		EnterRule(_localctx, 30, RULE_fieldref_element);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 390; Match(T__22);
+			State = 183; Match(LBRACKET);
+			State = 184; Match(IDENTIFIER);
+			State = 185; Match(RBRACKET);
 			}
 		}
 		catch (RecognitionException re) {
@@ -2512,188 +1276,64 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Not_in_operatorContext : ParserRuleContext {
-		public FillerContext filler() {
-			return GetRuleContext<FillerContext>(0);
+	public partial class ArrayContext : ParserRuleContext {
+		public ITerminalNode LBRACKET() { return GetToken(LogstashconfigParser.LBRACKET, 0); }
+		public Array_elementContext[] array_element() {
+			return GetRuleContexts<Array_elementContext>();
 		}
-		public Not_in_operatorContext(ParserRuleContext parent, int invokingState)
+		public Array_elementContext array_element(int i) {
+			return GetRuleContext<Array_elementContext>(i);
+		}
+		public ITerminalNode RBRACKET() { return GetToken(LogstashconfigParser.RBRACKET, 0); }
+		public ITerminalNode[] COMA() { return GetTokens(LogstashconfigParser.COMA); }
+		public ITerminalNode COMA(int i) {
+			return GetToken(LogstashconfigParser.COMA, i);
+		}
+		public ArrayContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_not_in_operator; } }
+		public override int RuleIndex { get { return RULE_array; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterNot_in_operator(this);
+			if (typedListener != null) typedListener.EnterArray(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitNot_in_operator(this);
+			if (typedListener != null) typedListener.ExitArray(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitNot_in_operator(this);
+			if (typedVisitor != null) return typedVisitor.VisitArray(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Not_in_operatorContext not_in_operator() {
-		Not_in_operatorContext _localctx = new Not_in_operatorContext(Context, State);
-		EnterRule(_localctx, 68, RULE_not_in_operator);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 392; Match(T__23);
-			State = 393; filler();
-			State = 394; Match(T__22);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class Method_callContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(LogstashconfigParser.ID, 0); }
-		public FillerContext[] filler() {
-			return GetRuleContexts<FillerContext>();
-		}
-		public FillerContext filler(int i) {
-			return GetRuleContext<FillerContext>(i);
-		}
-		public RvalueContext[] rvalue() {
-			return GetRuleContexts<RvalueContext>();
-		}
-		public RvalueContext rvalue(int i) {
-			return GetRuleContext<RvalueContext>(i);
-		}
-		public Method_callContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_method_call; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterMethod_call(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitMethod_call(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitMethod_call(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public Method_callContext method_call() {
-		Method_callContext _localctx = new Method_callContext(Context, State);
-		EnterRule(_localctx, 70, RULE_method_call);
+	public ArrayContext array() {
+		ArrayContext _localctx = new ArrayContext(Context, State);
+		EnterRule(_localctx, 32, RULE_array);
 		int _la;
 		try {
-			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 396; Match(ID);
-			State = 397; filler();
-			State = 398; Match(T__12);
-			State = 399; filler();
-			State = 411;
-			_la = TokenStream.La(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__10) | (1L << T__14) | (1L << T__24) | (1L << QUOTED_LITERAL) | (1L << ID) | (1L << DIGIT))) != 0)) {
-				{
-				State = 400; rvalue();
-				State = 408;
-				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,33,Context);
-				while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
-					if ( _alt==1 ) {
-						{
-						{
-						State = 401; filler();
-						State = 402; Match(T__15);
-						State = 403; filler();
-						State = 404; rvalue();
-						}
-						} 
-					}
-					State = 410;
-					ErrorHandler.Sync(this);
-					_alt = Interpreter.AdaptivePredict(TokenStream,33,Context);
-				}
-				}
-			}
-
-			State = 413; filler();
-			State = 414; Match(T__13);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class RegexpContext : ParserRuleContext {
-		public RegexpContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_regexp; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterRegexp(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitRegexp(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitRegexp(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public RegexpContext regexp() {
-		RegexpContext _localctx = new RegexpContext(Context, State);
-		EnterRule(_localctx, 72, RULE_regexp);
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 416; Match(T__24);
-			State = 420;
+			State = 187; Match(LBRACKET);
+			State = 188; array_element();
+			State = 193;
 			ErrorHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(TokenStream,35,Context);
-			while ( _alt!=1 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
-				if ( _alt==1+1 ) {
-					{
-					{
-					State = 417;
-					MatchWildcard();
-					}
-					} 
+			_la = TokenStream.La(1);
+			while (_la==COMA) {
+				{
+				{
+				State = 189; Match(COMA);
+				State = 190; array_element();
 				}
-				State = 422;
+				}
+				State = 195;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,35,Context);
+				_la = TokenStream.La(1);
 			}
-			State = 423; Match(T__24);
+			State = 196; Match(RBRACKET);
 			}
 		}
 		catch (RecognitionException re) {
@@ -2707,66 +1347,76 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Compare_operatorContext : ParserRuleContext {
-		public Compare_operatorContext(ParserRuleContext parent, int invokingState)
+	public partial class Array_elementContext : ParserRuleContext {
+		public ITerminalNode IDENTIFIER() { return GetToken(LogstashconfigParser.IDENTIFIER, 0); }
+		public ITerminalNode STRING() { return GetToken(LogstashconfigParser.STRING, 0); }
+		public ITerminalNode DECIMAL() { return GetToken(LogstashconfigParser.DECIMAL, 0); }
+		public ArrayContext array() {
+			return GetRuleContext<ArrayContext>(0);
+		}
+		public HashContext hash() {
+			return GetRuleContext<HashContext>(0);
+		}
+		public Array_elementContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_compare_operator; } }
+		public override int RuleIndex { get { return RULE_array_element; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterCompare_operator(this);
+			if (typedListener != null) typedListener.EnterArray_element(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitCompare_operator(this);
+			if (typedListener != null) typedListener.ExitArray_element(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitCompare_operator(this);
+			if (typedVisitor != null) return typedVisitor.VisitArray_element(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Compare_operatorContext compare_operator() {
-		Compare_operatorContext _localctx = new Compare_operatorContext(Context, State);
-		EnterRule(_localctx, 74, RULE_compare_operator);
+	public Array_elementContext array_element() {
+		Array_elementContext _localctx = new Array_elementContext(Context, State);
+		EnterRule(_localctx, 34, RULE_array_element);
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 431;
+			State = 203;
 			switch (TokenStream.La(1)) {
-			case T__25:
+			case IDENTIFIER:
+				EnterOuterAlt(_localctx, 1);
 				{
-				State = 425; Match(T__25);
+				State = 198; Match(IDENTIFIER);
 				}
 				break;
-			case T__26:
+			case STRING:
+				EnterOuterAlt(_localctx, 2);
 				{
-				State = 426; Match(T__26);
+				State = 199; Match(STRING);
 				}
 				break;
-			case T__27:
+			case DECIMAL:
+				EnterOuterAlt(_localctx, 3);
 				{
-				State = 427; Match(T__27);
+				State = 200; Match(DECIMAL);
 				}
 				break;
-			case T__28:
+			case LBRACKET:
+				EnterOuterAlt(_localctx, 4);
 				{
-				State = 428; Match(T__28);
+				State = 201; array();
 				}
 				break;
-			case T__29:
+			case LBRACE:
+				EnterOuterAlt(_localctx, 5);
 				{
-				State = 429; Match(T__29);
-				State = 430; Match(T__30);
+				State = 202; hash();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			}
 		}
 		catch (RecognitionException re) {
 			_localctx.exception = re;
@@ -2779,38 +1429,58 @@ public partial class LogstashconfigParser : Parser {
 		return _localctx;
 	}
 
-	public partial class Regexp_operatorContext : ParserRuleContext {
-		public Regexp_operatorContext(ParserRuleContext parent, int invokingState)
+	public partial class HashContext : ParserRuleContext {
+		public ITerminalNode LBRACE() { return GetToken(LogstashconfigParser.LBRACE, 0); }
+		public ITerminalNode RBRACE() { return GetToken(LogstashconfigParser.RBRACE, 0); }
+		public Hash_elementContext[] hash_element() {
+			return GetRuleContexts<Hash_elementContext>();
+		}
+		public Hash_elementContext hash_element(int i) {
+			return GetRuleContext<Hash_elementContext>(i);
+		}
+		public HashContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_regexp_operator; } }
+		public override int RuleIndex { get { return RULE_hash; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.EnterRegexp_operator(this);
+			if (typedListener != null) typedListener.EnterHash(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
-			if (typedListener != null) typedListener.ExitRegexp_operator(this);
+			if (typedListener != null) typedListener.ExitHash(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitRegexp_operator(this);
+			if (typedVisitor != null) return typedVisitor.VisitHash(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public Regexp_operatorContext regexp_operator() {
-		Regexp_operatorContext _localctx = new Regexp_operatorContext(Context, State);
-		EnterRule(_localctx, 76, RULE_regexp_operator);
+	public HashContext hash() {
+		HashContext _localctx = new HashContext(Context, State);
+		EnterRule(_localctx, 36, RULE_hash);
+		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			{
-			State = 433; Match(T__31);
-			State = 434; Match(T__32);
+			State = 205; Match(LBRACE);
+			State = 209;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.La(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STRING) | (1L << DECIMAL) | (1L << IDENTIFIER))) != 0)) {
+				{
+				{
+				State = 206; hash_element();
+				}
+				}
+				State = 211;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.La(1);
 			}
+			State = 212; Match(RBRACE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -2822,211 +1492,181 @@ public partial class LogstashconfigParser : Parser {
 			ExitRule();
 		}
 		return _localctx;
+	}
+
+	public partial class Hash_elementContext : ParserRuleContext {
+		public ITerminalNode HASHROCKET() { return GetToken(LogstashconfigParser.HASHROCKET, 0); }
+		public Plugin_attribute_valueContext plugin_attribute_value() {
+			return GetRuleContext<Plugin_attribute_valueContext>(0);
+		}
+		public ITerminalNode DECIMAL() { return GetToken(LogstashconfigParser.DECIMAL, 0); }
+		public ITerminalNode IDENTIFIER() { return GetToken(LogstashconfigParser.IDENTIFIER, 0); }
+		public ITerminalNode STRING() { return GetToken(LogstashconfigParser.STRING, 0); }
+		public Hash_elementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_hash_element; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
+			if (typedListener != null) typedListener.EnterHash_element(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ILogstashconfigListener typedListener = listener as ILogstashconfigListener;
+			if (typedListener != null) typedListener.ExitHash_element(this);
+		}
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ILogstashconfigVisitor<TResult> typedVisitor = visitor as ILogstashconfigVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitHash_element(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Hash_elementContext hash_element() {
+		Hash_elementContext _localctx = new Hash_elementContext(Context, State);
+		EnterRule(_localctx, 38, RULE_hash_element);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 214;
+			_la = TokenStream.La(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STRING) | (1L << DECIMAL) | (1L << IDENTIFIER))) != 0)) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+			    Consume();
+			}
+			State = 215; Match(HASHROCKET);
+			State = 216; plugin_attribute_value();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public override bool Sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
+		switch (ruleIndex) {
+		case 8: return logical_expression_sempred((Logical_expressionContext)_localctx, predIndex);
+		}
+		return true;
+	}
+	private bool logical_expression_sempred(Logical_expressionContext _localctx, int predIndex) {
+		switch (predIndex) {
+		case 0: return Precpred(Context, 10);
+		case 1: return Precpred(Context, 9);
+		case 2: return Precpred(Context, 8);
+		case 3: return Precpred(Context, 7);
+		}
+		return true;
 	}
 
 	private static string _serializedATN = _serializeATN();
 	private static string _serializeATN()
 	{
 	    StringBuilder sb = new StringBuilder();
-	    sb.Append("\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3)\x1B7");
+	    sb.Append("\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3$\xDD");
 		sb.Append("\x4\x2\t\x2\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a");
 		sb.Append("\t\a\x4\b\t\b\x4\t\t\t\x4\n\t\n\x4\v\t\v\x4\f\t\f\x4\r\t\r\x4");
 		sb.Append("\xE\t\xE\x4\xF\t\xF\x4\x10\t\x10\x4\x11\t\x11\x4\x12\t\x12\x4");
-		sb.Append("\x13\t\x13\x4\x14\t\x14\x4\x15\t\x15\x4\x16\t\x16\x4\x17\t\x17");
-		sb.Append("\x4\x18\t\x18\x4\x19\t\x19\x4\x1A\t\x1A\x4\x1B\t\x1B\x4\x1C");
-		sb.Append("\t\x1C\x4\x1D\t\x1D\x4\x1E\t\x1E\x4\x1F\t\x1F\x4 \t \x4!\t!");
-		sb.Append("\x4\"\t\"\x4#\t#\x4$\t$\x4%\t%\x4&\t&\x4\'\t\'\x4(\t(\x3\x2");
-		sb.Append("\x3\x2\x3\x2\x3\x2\x3\x2\a\x2V\n\x2\f\x2\xE\x2Y\v\x2\x3\x2\x3");
-		sb.Append("\x2\x3\x3\x3\x3\a\x3_\n\x3\f\x3\xE\x3\x62\v\x3\x3\x4\x3\x4\a");
-		sb.Append("\x4\x66\n\x4\f\x4\xE\x4i\v\x4\x3\x4\x6\x4l\n\x4\r\x4\xE\x4m");
-		sb.Append("\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\a\x5w\n\x5\f\x5\xE");
-		sb.Append("\x5z\v\x5\x3\x5\x3\x5\x3\x6\x3\x6\x3\a\x3\a\x5\a\x82\n\a\x3");
-		sb.Append("\b\x3\b\x3\b\x3\b\a\b\x88\n\b\f\b\xE\b\x8B\v\b\x3\b\x3\b\x3");
-		sb.Append("\b\x5\b\x90\n\b\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\n");
-		sb.Append("\x3\n\x3\n\x3\n\a\n\x9E\n\n\f\n\xE\n\xA1\v\n\x5\n\xA3\n\n\x3");
-		sb.Append("\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\v\x3\f\x3\f\x3\f\x3\f\x3\f\x3");
-		sb.Append("\f\x3\f\x3\f\x3\f\a\f\xB5\n\f\f\f\xE\f\xB8\v\f\x3\f\x3\f\x3");
-		sb.Append("\r\x3\r\x3\r\x3\r\x3\r\x3\r\x3\r\x3\r\x3\r\x3\r\x3\r\a\r\xC7");
-		sb.Append("\n\r\f\r\xE\r\xCA\v\r\x3\r\x3\r\x3\xE\x3\xE\x3\xE\x3\xE\x3\xE");
-		sb.Append("\x3\xE\x3\xE\a\xE\xD5\n\xE\f\xE\xE\xE\xD8\v\xE\x3\xE\x3\xE\x3");
-		sb.Append("\xF\x3\xF\x5\xF\xDE\n\xF\x3\x10\x3\x10\x3\x11\x3\x11\a\x11\xE4");
-		sb.Append("\n\x11\f\x11\xE\x11\xE7\v\x11\x3\x11\x3\x11\x3\x12\x3\x12\x3");
-		sb.Append("\x12\x3\x12\x3\x12\x3\x12\x5\x12\xF1\n\x12\x3\x13\x5\x13\xF4");
-		sb.Append("\n\x13\x3\x13\x6\x13\xF7\n\x13\r\x13\xE\x13\xF8\x3\x13\x3\x13");
-		sb.Append("\a\x13\xFD\n\x13\f\x13\xE\x13\x100\v\x13\x5\x13\x102\n\x13\x3");
-		sb.Append("\x14\x3\x14\x3\x14\x3\x14\x3\x14\x3\x14\a\x14\x10A\n\x14\f\x14");
-		sb.Append("\xE\x14\x10D\v\x14\x3\x15\x3\x15\x3\x15\x3\x15\x3\x15\x3\x15");
-		sb.Append("\x3\x15\x3\x15\x3\x15\x3\x15\x3\x15\x3\x15\x5\x15\x11B\n\x15");
-		sb.Append("\x3\x16\x3\x16\x3\x16\x3\x16\x3\x16\x3\x16\x3\x16\x3\x16\a\x16");
-		sb.Append("\x125\n\x16\f\x16\xE\x16\x128\v\x16\x5\x16\x12A\n\x16\x3\x16");
-		sb.Append("\x3\x16\x3\x16\x3\x17\x3\x17\x3\x17\x5\x17\x132\n\x17\x3\x17");
-		sb.Append("\x3\x17\x3\x17\x3\x18\x3\x18\a\x18\x139\n\x18\f\x18\xE\x18\x13C");
-		sb.Append("\v\x18\x3\x18\a\x18\x13F\n\x18\f\x18\xE\x18\x142\v\x18\x3\x19");
-		sb.Append("\x3\x19\x3\x19\x3\x19\x3\x19\x3\x19\x3\x1A\x3\x1A\x3\x1B\x3");
-		sb.Append("\x1B\x3\x1B\x3\x1B\x3\x1B\x3\x1B\x3\x1B\x3\x1B\x3\x1B\x3\x1B");
-		sb.Append("\x3\x1B\x3\x1B\x5\x1B\x158\n\x1B\x3\x1C\x3\x1C\x3\x1C\x3\x1C");
-		sb.Append("\x3\x1C\x3\x1C\x3\x1D\x3\x1D\x3\x1D\x3\x1D\x3\x1D\x3\x1D\x3");
-		sb.Append("\x1E\x3\x1E\x3\x1E\x3\x1E\x3\x1E\x3\x1E\x5\x1E\x16C\n\x1E\x3");
-		sb.Append("\x1F\x6\x1F\x16F\n\x1F\r\x1F\xE\x1F\x170\x3 \x3 \x3 \x3 \x3");
-		sb.Append(" \x3 \x3!\x3!\x3!\x3!\x3!\x3!\x5!\x17F\n!\x3\"\x3\"\x6\"\x183");
-		sb.Append("\n\"\r\"\xE\"\x184\x3\"\x3\"\x3#\x3#\x3$\x3$\x3$\x3$\x3%\x3");
-		sb.Append("%\x3%\x3%\x3%\x3%\x3%\x3%\x3%\x3%\a%\x199\n%\f%\xE%\x19C\v%");
-		sb.Append("\x5%\x19E\n%\x3%\x3%\x3%\x3&\x3&\a&\x1A5\n&\f&\xE&\x1A8\v&\x3");
-		sb.Append("&\x3&\x3\'\x3\'\x3\'\x3\'\x3\'\x3\'\x5\'\x1B2\n\'\x3(\x3(\x3");
-		sb.Append("(\x3(\x5\xE5\x184\x1A6\x2)\x2\x4\x6\b\n\f\xE\x10\x12\x14\x16");
-		sb.Append("\x18\x1A\x1C\x1E \"$&(*,.\x30\x32\x34\x36\x38:<>@\x42\x44\x46");
-		sb.Append("HJLN\x2\x5\x3\x2$$\x3\x2\x6\b\x3\x2\x14\x17\x1C4\x2P\x3\x2\x2");
-		sb.Append("\x2\x4`\x3\x2\x2\x2\x6\x63\x3\x2\x2\x2\bo\x3\x2\x2\x2\n}\x3");
-		sb.Append("\x2\x2\x2\f\x81\x3\x2\x2\x2\xE\x83\x3\x2\x2\x2\x10\x91\x3\x2");
-		sb.Append("\x2\x2\x12\xA2\x3\x2\x2\x2\x14\xA4\x3\x2\x2\x2\x16\xAB\x3\x2");
-		sb.Append("\x2\x2\x18\xBB\x3\x2\x2\x2\x1A\xCD\x3\x2\x2\x2\x1C\xDD\x3\x2");
-		sb.Append("\x2\x2\x1E\xDF\x3\x2\x2\x2 \xE1\x3\x2\x2\x2\"\xF0\x3\x2\x2\x2");
-		sb.Append("$\xF3\x3\x2\x2\x2&\x103\x3\x2\x2\x2(\x11A\x3\x2\x2\x2*\x11C");
-		sb.Append("\x3\x2\x2\x2,\x12E\x3\x2\x2\x2.\x136\x3\x2\x2\x2\x30\x143\x3");
-		sb.Append("\x2\x2\x2\x32\x149\x3\x2\x2\x2\x34\x157\x3\x2\x2\x2\x36\x159");
-		sb.Append("\x3\x2\x2\x2\x38\x15F\x3\x2\x2\x2:\x16B\x3\x2\x2\x2<\x16E\x3");
-		sb.Append("\x2\x2\x2>\x172\x3\x2\x2\x2@\x178\x3\x2\x2\x2\x42\x180\x3\x2");
-		sb.Append("\x2\x2\x44\x188\x3\x2\x2\x2\x46\x18A\x3\x2\x2\x2H\x18E\x3\x2");
-		sb.Append("\x2\x2J\x1A2\x3\x2\x2\x2L\x1B1\x3\x2\x2\x2N\x1B3\x3\x2\x2\x2");
-		sb.Append("PQ\x5\x4\x3\x2QW\x5\b\x5\x2RS\x5\x4\x3\x2ST\x5\b\x5\x2TV\x3");
-		sb.Append("\x2\x2\x2UR\x3\x2\x2\x2VY\x3\x2\x2\x2WU\x3\x2\x2\x2WX\x3\x2");
-		sb.Append("\x2\x2XZ\x3\x2\x2\x2YW\x3\x2\x2\x2Z[\x5\x4\x3\x2[\x3\x3\x2\x2");
-		sb.Append("\x2\\_\x5\x6\x4\x2]_\a%\x2\x2^\\\x3\x2\x2\x2^]\x3\x2\x2\x2_");
-		sb.Append("\x62\x3\x2\x2\x2`^\x3\x2\x2\x2`\x61\x3\x2\x2\x2\x61\x5\x3\x2");
-		sb.Append("\x2\x2\x62`\x3\x2\x2\x2\x63g\a\x3\x2\x2\x64\x66\n\x2\x2\x2\x65");
-		sb.Append("\x64\x3\x2\x2\x2\x66i\x3\x2\x2\x2g\x65\x3\x2\x2\x2gh\x3\x2\x2");
-		sb.Append("\x2hk\x3\x2\x2\x2ig\x3\x2\x2\x2jl\a$\x2\x2kj\x3\x2\x2\x2lm\x3");
-		sb.Append("\x2\x2\x2mk\x3\x2\x2\x2mn\x3\x2\x2\x2n\a\x3\x2\x2\x2op\x5\n");
-		sb.Append("\x6\x2pq\x5\x4\x3\x2qr\a\x4\x2\x2rx\x5\x4\x3\x2st\x5\f\a\x2");
-		sb.Append("tu\x5\x4\x3\x2uw\x3\x2\x2\x2vs\x3\x2\x2\x2wz\x3\x2\x2\x2xv\x3");
-		sb.Append("\x2\x2\x2xy\x3\x2\x2\x2y{\x3\x2\x2\x2zx\x3\x2\x2\x2{|\a\x5\x2");
-		sb.Append("\x2|\t\x3\x2\x2\x2}~\t\x3\x2\x2~\v\x3\x2\x2\x2\x7F\x82\x5\xE");
-		sb.Append("\b\x2\x80\x82\x5\x10\t\x2\x81\x7F\x3\x2\x2\x2\x81\x80\x3\x2");
-		sb.Append("\x2\x2\x82\r\x3\x2\x2\x2\x83\x89\x5\x16\f\x2\x84\x85\x5\x4\x3");
-		sb.Append("\x2\x85\x86\x5\x18\r\x2\x86\x88\x3\x2\x2\x2\x87\x84\x3\x2\x2");
-		sb.Append("\x2\x88\x8B\x3\x2\x2\x2\x89\x87\x3\x2\x2\x2\x89\x8A\x3\x2\x2");
-		sb.Append("\x2\x8A\x8F\x3\x2\x2\x2\x8B\x89\x3\x2\x2\x2\x8C\x8D\x5\x4\x3");
-		sb.Append("\x2\x8D\x8E\x5\x1A\xE\x2\x8E\x90\x3\x2\x2\x2\x8F\x8C\x3\x2\x2");
-		sb.Append("\x2\x8F\x90\x3\x2\x2\x2\x90\xF\x3\x2\x2\x2\x91\x92\x5\x1C\xF");
-		sb.Append("\x2\x92\x93\x5\x4\x3\x2\x93\x94\a\x4\x2\x2\x94\x95\x5\x4\x3");
-		sb.Append("\x2\x95\x96\x5\x12\n\x2\x96\x97\x5\x4\x3\x2\x97\x98\a\x5\x2");
-		sb.Append("\x2\x98\x11\x3\x2\x2\x2\x99\x9F\x5\x14\v\x2\x9A\x9B\x5\x4\x3");
-		sb.Append("\x2\x9B\x9C\x5\x14\v\x2\x9C\x9E\x3\x2\x2\x2\x9D\x9A\x3\x2\x2");
-		sb.Append("\x2\x9E\xA1\x3\x2\x2\x2\x9F\x9D\x3\x2\x2\x2\x9F\xA0\x3\x2\x2");
-		sb.Append("\x2\xA0\xA3\x3\x2\x2\x2\xA1\x9F\x3\x2\x2\x2\xA2\x99\x3\x2\x2");
-		sb.Append("\x2\xA2\xA3\x3\x2\x2\x2\xA3\x13\x3\x2\x2\x2\xA4\xA5\x5\x1C\xF");
-		sb.Append("\x2\xA5\xA6\x5\x4\x3\x2\xA6\xA7\a\t\x2\x2\xA7\xA8\x5\x4\x3\x2");
-		sb.Append("\xA8\xA9\x5\"\x12\x2\xA9\xAA\x5\x4\x3\x2\xAA\x15\x3\x2\x2\x2");
-		sb.Append("\xAB\xAC\a\n\x2\x2\xAC\xAD\x5\x4\x3\x2\xAD\xAE\x5&\x14\x2\xAE");
-		sb.Append("\xAF\x5\x4\x3\x2\xAF\xB0\a\x4\x2\x2\xB0\xB6\x5\x4\x3\x2\xB1");
-		sb.Append("\xB2\x5\f\a\x2\xB2\xB3\x5\x4\x3\x2\xB3\xB5\x3\x2\x2\x2\xB4\xB1");
-		sb.Append("\x3\x2\x2\x2\xB5\xB8\x3\x2\x2\x2\xB6\xB4\x3\x2\x2\x2\xB6\xB7");
-		sb.Append("\x3\x2\x2\x2\xB7\xB9\x3\x2\x2\x2\xB8\xB6\x3\x2\x2\x2\xB9\xBA");
-		sb.Append("\a\x5\x2\x2\xBA\x17\x3\x2\x2\x2\xBB\xBC\a\v\x2\x2\xBC\xBD\x5");
-		sb.Append("\x4\x3\x2\xBD\xBE\a\n\x2\x2\xBE\xBF\x5\x4\x3\x2\xBF\xC0\x5&");
-		sb.Append("\x14\x2\xC0\xC1\x5\x4\x3\x2\xC1\xC2\a\x4\x2\x2\xC2\xC8\x5\x4");
-		sb.Append("\x3\x2\xC3\xC4\x5\f\a\x2\xC4\xC5\x5\x4\x3\x2\xC5\xC7\x3\x2\x2");
-		sb.Append("\x2\xC6\xC3\x3\x2\x2\x2\xC7\xCA\x3\x2\x2\x2\xC8\xC6\x3\x2\x2");
-		sb.Append("\x2\xC8\xC9\x3\x2\x2\x2\xC9\xCB\x3\x2\x2\x2\xCA\xC8\x3\x2\x2");
-		sb.Append("\x2\xCB\xCC\a\x5\x2\x2\xCC\x19\x3\x2\x2\x2\xCD\xCE\a\v\x2\x2");
-		sb.Append("\xCE\xCF\x5\x4\x3\x2\xCF\xD0\a\x4\x2\x2\xD0\xD6\x5\x4\x3\x2");
-		sb.Append("\xD1\xD2\x5\f\a\x2\xD2\xD3\x5\x4\x3\x2\xD3\xD5\x3\x2\x2\x2\xD4");
-		sb.Append("\xD1\x3\x2\x2\x2\xD5\xD8\x3\x2\x2\x2\xD6\xD4\x3\x2\x2\x2\xD6");
-		sb.Append("\xD7\x3\x2\x2\x2\xD7\xD9\x3\x2\x2\x2\xD8\xD6\x3\x2\x2\x2\xD9");
-		sb.Append("\xDA\a\x5\x2\x2\xDA\x1B\x3\x2\x2\x2\xDB\xDE\a\'\x2\x2\xDC\xDE");
-		sb.Append("\x5\x1E\x10\x2\xDD\xDB\x3\x2\x2\x2\xDD\xDC\x3\x2\x2\x2\xDE\x1D");
-		sb.Append("\x3\x2\x2\x2\xDF\xE0\a&\x2\x2\xE0\x1F\x3\x2\x2\x2\xE1\xE5\a");
-		sb.Append("\f\x2\x2\xE2\xE4\v\x2\x2\x2\xE3\xE2\x3\x2\x2\x2\xE4\xE7\x3\x2");
-		sb.Append("\x2\x2\xE5\xE6\x3\x2\x2\x2\xE5\xE3\x3\x2\x2\x2\xE6\xE8\x3\x2");
-		sb.Append("\x2\x2\xE7\xE5\x3\x2\x2\x2\xE8\xE9\a\f\x2\x2\xE9!\x3\x2\x2\x2");
-		sb.Append("\xEA\xF1\x5\x10\t\x2\xEB\xF1\a\'\x2\x2\xEC\xF1\x5\x1E\x10\x2");
-		sb.Append("\xED\xF1\x5$\x13\x2\xEE\xF1\x5*\x16\x2\xEF\xF1\x5,\x17\x2\xF0");
-		sb.Append("\xEA\x3\x2\x2\x2\xF0\xEB\x3\x2\x2\x2\xF0\xEC\x3\x2\x2\x2\xF0");
-		sb.Append("\xED\x3\x2\x2\x2\xF0\xEE\x3\x2\x2\x2\xF0\xEF\x3\x2\x2\x2\xF1");
-		sb.Append("#\x3\x2\x2\x2\xF2\xF4\a\r\x2\x2\xF3\xF2\x3\x2\x2\x2\xF3\xF4");
-		sb.Append("\x3\x2\x2\x2\xF4\xF6\x3\x2\x2\x2\xF5\xF7\a(\x2\x2\xF6\xF5\x3");
-		sb.Append("\x2\x2\x2\xF7\xF8\x3\x2\x2\x2\xF8\xF6\x3\x2\x2\x2\xF8\xF9\x3");
-		sb.Append("\x2\x2\x2\xF9\x101\x3\x2\x2\x2\xFA\xFE\a\xE\x2\x2\xFB\xFD\a");
-		sb.Append("(\x2\x2\xFC\xFB\x3\x2\x2\x2\xFD\x100\x3\x2\x2\x2\xFE\xFC\x3");
-		sb.Append("\x2\x2\x2\xFE\xFF\x3\x2\x2\x2\xFF\x102\x3\x2\x2\x2\x100\xFE");
-		sb.Append("\x3\x2\x2\x2\x101\xFA\x3\x2\x2\x2\x101\x102\x3\x2\x2\x2\x102");
-		sb.Append("%\x3\x2\x2\x2\x103\x10B\x5(\x15\x2\x104\x105\x5\x4\x3\x2\x105");
-		sb.Append("\x106\x5\x32\x1A\x2\x106\x107\x5\x4\x3\x2\x107\x108\x5(\x15");
-		sb.Append("\x2\x108\x10A\x3\x2\x2\x2\x109\x104\x3\x2\x2\x2\x10A\x10D\x3");
-		sb.Append("\x2\x2\x2\x10B\x109\x3\x2\x2\x2\x10B\x10C\x3\x2\x2\x2\x10C\'");
-		sb.Append("\x3\x2\x2\x2\x10D\x10B\x3\x2\x2\x2\x10E\x10F\a\xF\x2\x2\x10F");
-		sb.Append("\x110\x5\x4\x3\x2\x110\x111\x5&\x14\x2\x111\x112\x5\x4\x3\x2");
-		sb.Append("\x112\x113\a\x10\x2\x2\x113\x11B\x3\x2\x2\x2\x114\x11B\x5\x34");
-		sb.Append("\x1B\x2\x115\x11B\x5\x36\x1C\x2\x116\x11B\x5\x38\x1D\x2\x117");
-		sb.Append("\x11B\x5> \x2\x118\x11B\x5@!\x2\x119\x11B\x5:\x1E\x2\x11A\x10E");
-		sb.Append("\x3\x2\x2\x2\x11A\x114\x3\x2\x2\x2\x11A\x115\x3\x2\x2\x2\x11A");
-		sb.Append("\x116\x3\x2\x2\x2\x11A\x117\x3\x2\x2\x2\x11A\x118\x3\x2\x2\x2");
-		sb.Append("\x11A\x119\x3\x2\x2\x2\x11B)\x3\x2\x2\x2\x11C\x11D\a\x11\x2");
-		sb.Append("\x2\x11D\x129\x5\x4\x3\x2\x11E\x126\x5\"\x12\x2\x11F\x120\x5");
-		sb.Append("\x4\x3\x2\x120\x121\a\x12\x2\x2\x121\x122\x5\x4\x3\x2\x122\x123");
-		sb.Append("\x5\"\x12\x2\x123\x125\x3\x2\x2\x2\x124\x11F\x3\x2\x2\x2\x125");
-		sb.Append("\x128\x3\x2\x2\x2\x126\x124\x3\x2\x2\x2\x126\x127\x3\x2\x2\x2");
-		sb.Append("\x127\x12A\x3\x2\x2\x2\x128\x126\x3\x2\x2\x2\x129\x11E\x3\x2");
-		sb.Append("\x2\x2\x129\x12A\x3\x2\x2\x2\x12A\x12B\x3\x2\x2\x2\x12B\x12C");
-		sb.Append("\x5\x4\x3\x2\x12C\x12D\a\x13\x2\x2\x12D+\x3\x2\x2\x2\x12E\x12F");
-		sb.Append("\a\x4\x2\x2\x12F\x131\x5\x4\x3\x2\x130\x132\x5.\x18\x2\x131");
-		sb.Append("\x130\x3\x2\x2\x2\x131\x132\x3\x2\x2\x2\x132\x133\x3\x2\x2\x2");
-		sb.Append("\x133\x134\x5\x4\x3\x2\x134\x135\a\x5\x2\x2\x135-\x3\x2\x2\x2");
-		sb.Append("\x136\x140\x5\x30\x19\x2\x137\x139\a%\x2\x2\x138\x137\x3\x2");
-		sb.Append("\x2\x2\x139\x13C\x3\x2\x2\x2\x13A\x138\x3\x2\x2\x2\x13A\x13B");
-		sb.Append("\x3\x2\x2\x2\x13B\x13D\x3\x2\x2\x2\x13C\x13A\x3\x2\x2\x2\x13D");
-		sb.Append("\x13F\x5\x30\x19\x2\x13E\x13A\x3\x2\x2\x2\x13F\x142\x3\x2\x2");
-		sb.Append("\x2\x140\x13E\x3\x2\x2\x2\x140\x141\x3\x2\x2\x2\x141/\x3\x2");
-		sb.Append("\x2\x2\x142\x140\x3\x2\x2\x2\x143\x144\x5\x1C\xF\x2\x144\x145");
-		sb.Append("\x5\x4\x3\x2\x145\x146\a\t\x2\x2\x146\x147\x5\x4\x3\x2\x147");
-		sb.Append("\x148\x5\"\x12\x2\x148\x31\x3\x2\x2\x2\x149\x14A\t\x4\x2\x2");
-		sb.Append("\x14A\x33\x3\x2\x2\x2\x14B\x14C\a\x18\x2\x2\x14C\x14D\x5\x4");
-		sb.Append("\x3\x2\x14D\x14E\a\xF\x2\x2\x14E\x14F\x5\x4\x3\x2\x14F\x150");
-		sb.Append("\x5&\x14\x2\x150\x151\x5\x4\x3\x2\x151\x152\a\x10\x2\x2\x152");
-		sb.Append("\x158\x3\x2\x2\x2\x153\x154\a\x18\x2\x2\x154\x155\x5\x4\x3\x2");
-		sb.Append("\x155\x156\x5<\x1F\x2\x156\x158\x3\x2\x2\x2\x157\x14B\x3\x2");
-		sb.Append("\x2\x2\x157\x153\x3\x2\x2\x2\x158\x35\x3\x2\x2\x2\x159\x15A");
-		sb.Append("\x5:\x1E\x2\x15A\x15B\x5\x4\x3\x2\x15B\x15C\x5\x44#\x2\x15C");
-		sb.Append("\x15D\x5\x4\x3\x2\x15D\x15E\x5:\x1E\x2\x15E\x37\x3\x2\x2\x2");
-		sb.Append("\x15F\x160\x5:\x1E\x2\x160\x161\x5\x4\x3\x2\x161\x162\x5\x46");
-		sb.Append("$\x2\x162\x163\x5\x4\x3\x2\x163\x164\x5:\x1E\x2\x164\x39\x3");
-		sb.Append("\x2\x2\x2\x165\x16C\x5\x1E\x10\x2\x166\x16C\x5$\x13\x2\x167");
-		sb.Append("\x16C\x5<\x1F\x2\x168\x16C\x5*\x16\x2\x169\x16C\x5H%\x2\x16A");
-		sb.Append("\x16C\x5J&\x2\x16B\x165\x3\x2\x2\x2\x16B\x166\x3\x2\x2\x2\x16B");
-		sb.Append("\x167\x3\x2\x2\x2\x16B\x168\x3\x2\x2\x2\x16B\x169\x3\x2\x2\x2");
-		sb.Append("\x16B\x16A\x3\x2\x2\x2\x16C;\x3\x2\x2\x2\x16D\x16F\x5\x42\"");
-		sb.Append("\x2\x16E\x16D\x3\x2\x2\x2\x16F\x170\x3\x2\x2\x2\x170\x16E\x3");
-		sb.Append("\x2\x2\x2\x170\x171\x3\x2\x2\x2\x171=\x3\x2\x2\x2\x172\x173");
-		sb.Append("\x5:\x1E\x2\x173\x174\x5\x4\x3\x2\x174\x175\x5L\'\x2\x175\x176");
-		sb.Append("\x5\x4\x3\x2\x176\x177\x5:\x1E\x2\x177?\x3\x2\x2\x2\x178\x179");
-		sb.Append("\x5:\x1E\x2\x179\x17A\x5\x4\x3\x2\x17A\x17B\x5N(\x2\x17B\x17E");
-		sb.Append("\x5\x4\x3\x2\x17C\x17F\x5\x1E\x10\x2\x17D\x17F\x5J&\x2\x17E");
-		sb.Append("\x17C\x3\x2\x2\x2\x17E\x17D\x3\x2\x2\x2\x17F\x41\x3\x2\x2\x2");
-		sb.Append("\x180\x182\a\x11\x2\x2\x181\x183\v\x2\x2\x2\x182\x181\x3\x2");
-		sb.Append("\x2\x2\x183\x184\x3\x2\x2\x2\x184\x185\x3\x2\x2\x2\x184\x182");
-		sb.Append("\x3\x2\x2\x2\x185\x186\x3\x2\x2\x2\x186\x187\a\x13\x2\x2\x187");
-		sb.Append("\x43\x3\x2\x2\x2\x188\x189\a\x19\x2\x2\x189\x45\x3\x2\x2\x2");
-		sb.Append("\x18A\x18B\a\x1A\x2\x2\x18B\x18C\x5\x4\x3\x2\x18C\x18D\a\x19");
-		sb.Append("\x2\x2\x18DG\x3\x2\x2\x2\x18E\x18F\a\'\x2\x2\x18F\x190\x5\x4");
-		sb.Append("\x3\x2\x190\x191\a\xF\x2\x2\x191\x19D\x5\x4\x3\x2\x192\x19A");
-		sb.Append("\x5:\x1E\x2\x193\x194\x5\x4\x3\x2\x194\x195\a\x12\x2\x2\x195");
-		sb.Append("\x196\x5\x4\x3\x2\x196\x197\x5:\x1E\x2\x197\x199\x3\x2\x2\x2");
-		sb.Append("\x198\x193\x3\x2\x2\x2\x199\x19C\x3\x2\x2\x2\x19A\x198\x3\x2");
-		sb.Append("\x2\x2\x19A\x19B\x3\x2\x2\x2\x19B\x19E\x3\x2\x2\x2\x19C\x19A");
-		sb.Append("\x3\x2\x2\x2\x19D\x192\x3\x2\x2\x2\x19D\x19E\x3\x2\x2\x2\x19E");
-		sb.Append("\x19F\x3\x2\x2\x2\x19F\x1A0\x5\x4\x3\x2\x1A0\x1A1\a\x10\x2\x2");
-		sb.Append("\x1A1I\x3\x2\x2\x2\x1A2\x1A6\a\x1B\x2\x2\x1A3\x1A5\v\x2\x2\x2");
-		sb.Append("\x1A4\x1A3\x3\x2\x2\x2\x1A5\x1A8\x3\x2\x2\x2\x1A6\x1A7\x3\x2");
-		sb.Append("\x2\x2\x1A6\x1A4\x3\x2\x2\x2\x1A7\x1A9\x3\x2\x2\x2\x1A8\x1A6");
-		sb.Append("\x3\x2\x2\x2\x1A9\x1AA\a\x1B\x2\x2\x1AAK\x3\x2\x2\x2\x1AB\x1B2");
-		sb.Append("\a\x1C\x2\x2\x1AC\x1B2\a\x1D\x2\x2\x1AD\x1B2\a\x1E\x2\x2\x1AE");
-		sb.Append("\x1B2\a\x1F\x2\x2\x1AF\x1B0\a \x2\x2\x1B0\x1B2\a!\x2\x2\x1B1");
-		sb.Append("\x1AB\x3\x2\x2\x2\x1B1\x1AC\x3\x2\x2\x2\x1B1\x1AD\x3\x2\x2\x2");
-		sb.Append("\x1B1\x1AE\x3\x2\x2\x2\x1B1\x1AF\x3\x2\x2\x2\x1B2M\x3\x2\x2");
-		sb.Append("\x2\x1B3\x1B4\a\"\x2\x2\x1B4\x1B5\a#\x2\x2\x1B5O\x3\x2\x2\x2");
-		sb.Append("\'W^`gmx\x81\x89\x8F\x9F\xA2\xB6\xC8\xD6\xDD\xE5\xF0\xF3\xF8");
-		sb.Append("\xFE\x101\x10B\x11A\x126\x129\x131\x13A\x140\x157\x16B\x170");
-		sb.Append("\x17E\x184\x19A\x19D\x1A6\x1B1");
+		sb.Append("\x13\t\x13\x4\x14\t\x14\x4\x15\t\x15\x3\x2\x6\x2,\n\x2\r\x2");
+		sb.Append("\xE\x2-\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3\x4\x3\x4\x3\x4\a\x4");
+		sb.Append("\x38\n\x4\f\x4\xE\x4;\v\x4\x3\x4\x3\x4\x3\x5\x3\x5\x3\x5\x3");
+		sb.Append("\x6\x3\x6\a\x6\x44\n\x6\f\x6\xE\x6G\v\x6\x3\x6\x3\x6\x3\a\x3");
+		sb.Append("\a\x3\a\x3\a\x3\b\x3\b\x3\b\x3\b\x3\b\x3\b\x5\bU\n\b\x3\t\x3");
+		sb.Append("\t\x3\t\x3\t\x3\t\x3\t\x3\t\x3\t\a\t_\n\t\f\t\xE\t\x62\v\t\x3");
+		sb.Append("\t\x3\t\x5\t\x66\n\t\x3\n\x3\n\x3\n\x3\n\x3\n\x3\n\x3\n\x3\n");
+		sb.Append("\x3\n\x3\n\x5\nr\n\n\x3\n\x3\n\x3\n\x3\n\x3\n\x3\n\x3\n\x3\n");
+		sb.Append("\x3\n\x3\n\x3\n\x3\n\a\n\x80\n\n\f\n\xE\n\x83\v\n\x3\v\x3\v");
+		sb.Append("\x3\v\x3\v\x3\v\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f");
+		sb.Append("\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f\x3\f");
+		sb.Append("\x3\f\x3\f\x3\f\x5\f\xA2\n\f\x3\r\x3\r\x5\r\xA6\n\r\x3\r\x3");
+		sb.Append("\r\x3\r\x3\xE\x3\xE\x3\xE\x3\xE\x3\xF\x3\xF\x3\xF\x3\xF\x5\xF");
+		sb.Append("\xB3\n\xF\x3\x10\x6\x10\xB6\n\x10\r\x10\xE\x10\xB7\x3\x11\x3");
+		sb.Append("\x11\x3\x11\x3\x11\x3\x12\x3\x12\x3\x12\x3\x12\a\x12\xC2\n\x12");
+		sb.Append("\f\x12\xE\x12\xC5\v\x12\x3\x12\x3\x12\x3\x13\x3\x13\x3\x13\x3");
+		sb.Append("\x13\x3\x13\x5\x13\xCE\n\x13\x3\x14\x3\x14\a\x14\xD2\n\x14\f");
+		sb.Append("\x14\xE\x14\xD5\v\x14\x3\x14\x3\x14\x3\x15\x3\x15\x3\x15\x3");
+		sb.Append("\x15\x3\x15\x2\x3\x12\x16\x2\x4\x6\b\n\f\xE\x10\x12\x14\x16");
+		sb.Append("\x18\x1A\x1C\x1E \"$&(\x2\x6\x3\x2\x3\x5\x3\x2\x17\x18\x3\x2");
+		sb.Append("\x1F \x4\x2\x1F\x1F!\"\xEC\x2+\x3\x2\x2\x2\x4\x31\x3\x2\x2\x2");
+		sb.Append("\x6\x34\x3\x2\x2\x2\b>\x3\x2\x2\x2\n\x41\x3\x2\x2\x2\fJ\x3\x2");
+		sb.Append("\x2\x2\xET\x3\x2\x2\x2\x10V\x3\x2\x2\x2\x12q\x3\x2\x2\x2\x14");
+		sb.Append("\x84\x3\x2\x2\x2\x16\xA1\x3\x2\x2\x2\x18\xA3\x3\x2\x2\x2\x1A");
+		sb.Append("\xAA\x3\x2\x2\x2\x1C\xB2\x3\x2\x2\x2\x1E\xB5\x3\x2\x2\x2 \xB9");
+		sb.Append("\x3\x2\x2\x2\"\xBD\x3\x2\x2\x2$\xCD\x3\x2\x2\x2&\xCF\x3\x2\x2");
+		sb.Append("\x2(\xD8\x3\x2\x2\x2*,\x5\x4\x3\x2+*\x3\x2\x2\x2,-\x3\x2\x2");
+		sb.Append("\x2-+\x3\x2\x2\x2-.\x3\x2\x2\x2./\x3\x2\x2\x2/\x30\a\x2\x2\x3");
+		sb.Append("\x30\x3\x3\x2\x2\x2\x31\x32\t\x2\x2\x2\x32\x33\x5\x6\x4\x2\x33");
+		sb.Append("\x5\x3\x2\x2\x2\x34\x39\a\x6\x2\x2\x35\x38\x5\b\x5\x2\x36\x38");
+		sb.Append("\x5\x10\t\x2\x37\x35\x3\x2\x2\x2\x37\x36\x3\x2\x2\x2\x38;\x3");
+		sb.Append("\x2\x2\x2\x39\x37\x3\x2\x2\x2\x39:\x3\x2\x2\x2:<\x3\x2\x2\x2");
+		sb.Append(";\x39\x3\x2\x2\x2<=\a\a\x2\x2=\a\x3\x2\x2\x2>?\a\"\x2\x2?@\x5");
+		sb.Append("\n\x6\x2@\t\x3\x2\x2\x2\x41\x45\a\x6\x2\x2\x42\x44\x5\f\a\x2");
+		sb.Append("\x43\x42\x3\x2\x2\x2\x44G\x3\x2\x2\x2\x45\x43\x3\x2\x2\x2\x45");
+		sb.Append("\x46\x3\x2\x2\x2\x46H\x3\x2\x2\x2G\x45\x3\x2\x2\x2HI\a\a\x2");
+		sb.Append("\x2I\v\x3\x2\x2\x2JK\a\"\x2\x2KL\a\f\x2\x2LM\x5\xE\b\x2M\r\x3");
+		sb.Append("\x2\x2\x2NU\x5\b\x5\x2OU\a\"\x2\x2PU\a\x1F\x2\x2QU\a!\x2\x2");
+		sb.Append("RU\x5\"\x12\x2SU\x5&\x14\x2TN\x3\x2\x2\x2TO\x3\x2\x2\x2TP\x3");
+		sb.Append("\x2\x2\x2TQ\x3\x2\x2\x2TR\x3\x2\x2\x2TS\x3\x2\x2\x2U\xF\x3\x2");
+		sb.Append("\x2\x2VW\a\x1D\x2\x2WX\x5\x12\n\x2X`\x5\x6\x4\x2YZ\a\x1E\x2");
+		sb.Append("\x2Z[\a\x1D\x2\x2[\\\x5\x12\n\x2\\]\x5\x6\x4\x2]_\x3\x2\x2\x2");
+		sb.Append("^Y\x3\x2\x2\x2_\x62\x3\x2\x2\x2`^\x3\x2\x2\x2`\x61\x3\x2\x2");
+		sb.Append("\x2\x61\x65\x3\x2\x2\x2\x62`\x3\x2\x2\x2\x63\x64\a\x1E\x2\x2");
+		sb.Append("\x64\x66\x5\x6\x4\x2\x65\x63\x3\x2\x2\x2\x65\x66\x3\x2\x2\x2");
+		sb.Append("\x66\x11\x3\x2\x2\x2gh\b\n\x1\x2hr\x5\x16\f\x2ir\x5\x18\r\x2");
+		sb.Append("jr\x5\x1A\xE\x2kr\x5\x14\v\x2lm\a\b\x2\x2mn\x5\x12\n\x2no\a");
+		sb.Append("\t\x2\x2or\x3\x2\x2\x2pr\x5\x1C\xF\x2qg\x3\x2\x2\x2qi\x3\x2");
+		sb.Append("\x2\x2qj\x3\x2\x2\x2qk\x3\x2\x2\x2ql\x3\x2\x2\x2qp\x3\x2\x2");
+		sb.Append("\x2r\x81\x3\x2\x2\x2st\f\f\x2\x2tu\a\x19\x2\x2u\x80\x5\x12\n");
+		sb.Append("\rvw\f\v\x2\x2wx\a\x1A\x2\x2x\x80\x5\x12\n\fyz\f\n\x2\x2z{\a");
+		sb.Append("\x1C\x2\x2{\x80\x5\x12\n\v|}\f\t\x2\x2}~\a\x1B\x2\x2~\x80\x5");
+		sb.Append("\x12\n\n\x7Fs\x3\x2\x2\x2\x7Fv\x3\x2\x2\x2\x7Fy\x3\x2\x2\x2");
+		sb.Append("\x7F|\x3\x2\x2\x2\x80\x83\x3\x2\x2\x2\x81\x7F\x3\x2\x2\x2\x81");
+		sb.Append("\x82\x3\x2\x2\x2\x82\x13\x3\x2\x2\x2\x83\x81\x3\x2\x2\x2\x84");
+		sb.Append("\x85\a\x13\x2\x2\x85\x86\a\b\x2\x2\x86\x87\x5\x12\n\x2\x87\x88");
+		sb.Append("\a\t\x2\x2\x88\x15\x3\x2\x2\x2\x89\x8A\x5\x1C\xF\x2\x8A\x8B");
+		sb.Append("\a\r\x2\x2\x8B\x8C\x5\x1C\xF\x2\x8C\xA2\x3\x2\x2\x2\x8D\x8E");
+		sb.Append("\x5\x1C\xF\x2\x8E\x8F\a\xE\x2\x2\x8F\x90\x5\x1C\xF\x2\x90\xA2");
+		sb.Append("\x3\x2\x2\x2\x91\x92\x5\x1C\xF\x2\x92\x93\a\xF\x2\x2\x93\x94");
+		sb.Append("\x5\x1C\xF\x2\x94\xA2\x3\x2\x2\x2\x95\x96\x5\x1C\xF\x2\x96\x97");
+		sb.Append("\a\x10\x2\x2\x97\x98\x5\x1C\xF\x2\x98\xA2\x3\x2\x2\x2\x99\x9A");
+		sb.Append("\x5\x1C\xF\x2\x9A\x9B\a\x11\x2\x2\x9B\x9C\x5\x1C\xF\x2\x9C\xA2");
+		sb.Append("\x3\x2\x2\x2\x9D\x9E\x5\x1C\xF\x2\x9E\x9F\a\x12\x2\x2\x9F\xA0");
+		sb.Append("\x5\x1C\xF\x2\xA0\xA2\x3\x2\x2\x2\xA1\x89\x3\x2\x2\x2\xA1\x8D");
+		sb.Append("\x3\x2\x2\x2\xA1\x91\x3\x2\x2\x2\xA1\x95\x3\x2\x2\x2\xA1\x99");
+		sb.Append("\x3\x2\x2\x2\xA1\x9D\x3\x2\x2\x2\xA2\x17\x3\x2\x2\x2\xA3\xA5");
+		sb.Append("\x5\x1C\xF\x2\xA4\xA6\a\x16\x2\x2\xA5\xA4\x3\x2\x2\x2\xA5\xA6");
+		sb.Append("\x3\x2\x2\x2\xA6\xA7\x3\x2\x2\x2\xA7\xA8\a\x15\x2\x2\xA8\xA9");
+		sb.Append("\x5\x1C\xF\x2\xA9\x19\x3\x2\x2\x2\xAA\xAB\x5\x1C\xF\x2\xAB\xAC");
+		sb.Append("\t\x3\x2\x2\xAC\xAD\t\x4\x2\x2\xAD\x1B\x3\x2\x2\x2\xAE\xB3\a");
+		sb.Append("\x1F\x2\x2\xAF\xB3\a!\x2\x2\xB0\xB3\x5\x1E\x10\x2\xB1\xB3\x5");
+		sb.Append("\"\x12\x2\xB2\xAE\x3\x2\x2\x2\xB2\xAF\x3\x2\x2\x2\xB2\xB0\x3");
+		sb.Append("\x2\x2\x2\xB2\xB1\x3\x2\x2\x2\xB3\x1D\x3\x2\x2\x2\xB4\xB6\x5");
+		sb.Append(" \x11\x2\xB5\xB4\x3\x2\x2\x2\xB6\xB7\x3\x2\x2\x2\xB7\xB5\x3");
+		sb.Append("\x2\x2\x2\xB7\xB8\x3\x2\x2\x2\xB8\x1F\x3\x2\x2\x2\xB9\xBA\a");
+		sb.Append("\n\x2\x2\xBA\xBB\a\"\x2\x2\xBB\xBC\a\v\x2\x2\xBC!\x3\x2\x2\x2");
+		sb.Append("\xBD\xBE\a\n\x2\x2\xBE\xC3\x5$\x13\x2\xBF\xC0\a\x14\x2\x2\xC0");
+		sb.Append("\xC2\x5$\x13\x2\xC1\xBF\x3\x2\x2\x2\xC2\xC5\x3\x2\x2\x2\xC3");
+		sb.Append("\xC1\x3\x2\x2\x2\xC3\xC4\x3\x2\x2\x2\xC4\xC6\x3\x2\x2\x2\xC5");
+		sb.Append("\xC3\x3\x2\x2\x2\xC6\xC7\a\v\x2\x2\xC7#\x3\x2\x2\x2\xC8\xCE");
+		sb.Append("\a\"\x2\x2\xC9\xCE\a\x1F\x2\x2\xCA\xCE\a!\x2\x2\xCB\xCE\x5\"");
+		sb.Append("\x12\x2\xCC\xCE\x5&\x14\x2\xCD\xC8\x3\x2\x2\x2\xCD\xC9\x3\x2");
+		sb.Append("\x2\x2\xCD\xCA\x3\x2\x2\x2\xCD\xCB\x3\x2\x2\x2\xCD\xCC\x3\x2");
+		sb.Append("\x2\x2\xCE%\x3\x2\x2\x2\xCF\xD3\a\x6\x2\x2\xD0\xD2\x5(\x15\x2");
+		sb.Append("\xD1\xD0\x3\x2\x2\x2\xD2\xD5\x3\x2\x2\x2\xD3\xD1\x3\x2\x2\x2");
+		sb.Append("\xD3\xD4\x3\x2\x2\x2\xD4\xD6\x3\x2\x2\x2\xD5\xD3\x3\x2\x2\x2");
+		sb.Append("\xD6\xD7\a\a\x2\x2\xD7\'\x3\x2\x2\x2\xD8\xD9\t\x5\x2\x2\xD9");
+		sb.Append("\xDA\a\f\x2\x2\xDA\xDB\x5\xE\b\x2\xDB)\x3\x2\x2\x2\x13-\x37");
+		sb.Append("\x39\x45T`\x65q\x7F\x81\xA1\xA5\xB2\xB7\xC3\xCD\xD3");
 	    return sb.ToString();
 	}
 

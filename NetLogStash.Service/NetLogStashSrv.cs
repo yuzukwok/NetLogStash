@@ -1,15 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using NetLogStash.EventCore;
+using NetLogStash.Config;
 
 namespace NetLogStash.Service
 {
     public class NetLogStashSrv
     {
 
-        public void Start() { }
-        public void Stop() { }
+        private IDisposable _eventHerder;
+        public void Start()
+        {
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+
+            string configLocation = "logstash.conf";
+
+            _eventHerder = new EventHerder(typeof(JsonConfiguration), configLocation);
+
+        }
+        public void Stop()
+        {
+            if (_eventHerder != null) _eventHerder.Dispose();
+        }
     }
 }

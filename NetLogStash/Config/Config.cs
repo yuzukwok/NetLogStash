@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetLogStash
+namespace NetLogStash.Config
 {
-   public class Config
+   public class ConfigMeta
     {
         public Dictionary<string, IList<Plugin>> Plugins { get; set; }
       

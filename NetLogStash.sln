@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetLogStash.Service", "NetL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetLogStash.Plugin", "NetLogStash.Plugin\NetLogStash.Plugin.csproj", "{48CC3D88-CBB8-4753-8742-2040F852D482}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{940308C3-04DA-4D9D-A32D-93B07B9B8A99}"
+	ProjectSection(SolutionItems) = preProject
+		Items\Logstashconfig.g4 = Items\Logstashconfig.g4
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

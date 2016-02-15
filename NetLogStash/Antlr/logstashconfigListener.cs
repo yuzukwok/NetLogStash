@@ -19,9 +19,6 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
-
-  
-
 using Antlr4.Runtime.Misc;
 using IParseTreeListener = Antlr4.Runtime.Tree.IParseTreeListener;
 using IToken = Antlr4.Runtime.IToken;
@@ -44,245 +41,85 @@ public interface ILogstashconfigListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitConfig([NotNull] LogstashconfigParser.ConfigContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.filler"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.stage_declaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFiller([NotNull] LogstashconfigParser.FillerContext context);
+	void EnterStage_declaration([NotNull] LogstashconfigParser.Stage_declarationContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.filler"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.stage_declaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFiller([NotNull] LogstashconfigParser.FillerContext context);
+	void ExitStage_declaration([NotNull] LogstashconfigParser.Stage_declarationContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.comment"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.stage_definition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterComment([NotNull] LogstashconfigParser.CommentContext context);
+	void EnterStage_definition([NotNull] LogstashconfigParser.Stage_definitionContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.comment"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.stage_definition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitComment([NotNull] LogstashconfigParser.CommentContext context);
+	void ExitStage_definition([NotNull] LogstashconfigParser.Stage_definitionContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.plugin_section"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.plugin_declaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPlugin_section([NotNull] LogstashconfigParser.Plugin_sectionContext context);
+	void EnterPlugin_declaration([NotNull] LogstashconfigParser.Plugin_declarationContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.plugin_section"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.plugin_declaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPlugin_section([NotNull] LogstashconfigParser.Plugin_sectionContext context);
+	void ExitPlugin_declaration([NotNull] LogstashconfigParser.Plugin_declarationContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.plugin_type"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.plugin_definition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPlugin_type([NotNull] LogstashconfigParser.Plugin_typeContext context);
+	void EnterPlugin_definition([NotNull] LogstashconfigParser.Plugin_definitionContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.plugin_type"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.plugin_definition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPlugin_type([NotNull] LogstashconfigParser.Plugin_typeContext context);
+	void ExitPlugin_definition([NotNull] LogstashconfigParser.Plugin_definitionContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.branch_or_plugin"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.plugin_attribute"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBranch_or_plugin([NotNull] LogstashconfigParser.Branch_or_pluginContext context);
+	void EnterPlugin_attribute([NotNull] LogstashconfigParser.Plugin_attributeContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.branch_or_plugin"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.plugin_attribute"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBranch_or_plugin([NotNull] LogstashconfigParser.Branch_or_pluginContext context);
+	void ExitPlugin_attribute([NotNull] LogstashconfigParser.Plugin_attributeContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.branch"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.plugin_attribute_value"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBranch([NotNull] LogstashconfigParser.BranchContext context);
+	void EnterPlugin_attribute_value([NotNull] LogstashconfigParser.Plugin_attribute_valueContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.branch"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.plugin_attribute_value"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBranch([NotNull] LogstashconfigParser.BranchContext context);
+	void ExitPlugin_attribute_value([NotNull] LogstashconfigParser.Plugin_attribute_valueContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.plugin"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.stage_condition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPlugin([NotNull] LogstashconfigParser.PluginContext context);
+	void EnterStage_condition([NotNull] LogstashconfigParser.Stage_conditionContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.plugin"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.stage_condition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPlugin([NotNull] LogstashconfigParser.PluginContext context);
+	void ExitStage_condition([NotNull] LogstashconfigParser.Stage_conditionContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.attributes"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.logical_expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAttributes([NotNull] LogstashconfigParser.AttributesContext context);
+	void EnterLogical_expression([NotNull] LogstashconfigParser.Logical_expressionContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.attributes"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.logical_expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAttributes([NotNull] LogstashconfigParser.AttributesContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.attribute"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterAttribute([NotNull] LogstashconfigParser.AttributeContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.attribute"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitAttribute([NotNull] LogstashconfigParser.AttributeContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.r_if"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterR_if([NotNull] LogstashconfigParser.R_ifContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.r_if"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitR_if([NotNull] LogstashconfigParser.R_ifContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.else_if"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterElse_if([NotNull] LogstashconfigParser.Else_ifContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.else_if"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitElse_if([NotNull] LogstashconfigParser.Else_ifContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.r_else"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterR_else([NotNull] LogstashconfigParser.R_elseContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.r_else"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitR_else([NotNull] LogstashconfigParser.R_elseContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.name"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterName([NotNull] LogstashconfigParser.NameContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.name"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitName([NotNull] LogstashconfigParser.NameContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.string"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterString([NotNull] LogstashconfigParser.StringContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.string"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitString([NotNull] LogstashconfigParser.StringContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.single_quoted_string"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterSingle_quoted_string([NotNull] LogstashconfigParser.Single_quoted_stringContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.single_quoted_string"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitSingle_quoted_string([NotNull] LogstashconfigParser.Single_quoted_stringContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.value"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterValue([NotNull] LogstashconfigParser.ValueContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.value"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitValue([NotNull] LogstashconfigParser.ValueContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.number"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterNumber([NotNull] LogstashconfigParser.NumberContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.number"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitNumber([NotNull] LogstashconfigParser.NumberContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.condition"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterCondition([NotNull] LogstashconfigParser.ConditionContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.condition"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitCondition([NotNull] LogstashconfigParser.ConditionContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterExpression([NotNull] LogstashconfigParser.ExpressionContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitExpression([NotNull] LogstashconfigParser.ExpressionContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.array"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterArray([NotNull] LogstashconfigParser.ArrayContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.array"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitArray([NotNull] LogstashconfigParser.ArrayContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.hash"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterHash([NotNull] LogstashconfigParser.HashContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.hash"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitHash([NotNull] LogstashconfigParser.HashContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.hashentries"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterHashentries([NotNull] LogstashconfigParser.HashentriesContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.hashentries"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitHashentries([NotNull] LogstashconfigParser.HashentriesContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.hashentry"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterHashentry([NotNull] LogstashconfigParser.HashentryContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.hashentry"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitHashentry([NotNull] LogstashconfigParser.HashentryContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.boolean_operator"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterBoolean_operator([NotNull] LogstashconfigParser.Boolean_operatorContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.boolean_operator"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitBoolean_operator([NotNull] LogstashconfigParser.Boolean_operatorContext context);
+	void ExitLogical_expression([NotNull] LogstashconfigParser.Logical_expressionContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="LogstashconfigParser.negative_expression"/>.
 	/// </summary>
@@ -294,6 +131,16 @@ public interface ILogstashconfigListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitNegative_expression([NotNull] LogstashconfigParser.Negative_expressionContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.compare_expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCompare_expression([NotNull] LogstashconfigParser.Compare_expressionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.compare_expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCompare_expression([NotNull] LogstashconfigParser.Compare_expressionContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="LogstashconfigParser.in_expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -304,15 +151,15 @@ public interface ILogstashconfigListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitIn_expression([NotNull] LogstashconfigParser.In_expressionContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.not_in_expression"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.match_expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNot_in_expression([NotNull] LogstashconfigParser.Not_in_expressionContext context);
+	void EnterMatch_expression([NotNull] LogstashconfigParser.Match_expressionContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.not_in_expression"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.match_expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNot_in_expression([NotNull] LogstashconfigParser.Not_in_expressionContext context);
+	void ExitMatch_expression([NotNull] LogstashconfigParser.Match_expressionContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="LogstashconfigParser.rvalue"/>.
 	/// </summary>
@@ -324,103 +171,63 @@ public interface ILogstashconfigListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitRvalue([NotNull] LogstashconfigParser.RvalueContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.selector"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.fieldref"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelector([NotNull] LogstashconfigParser.SelectorContext context);
+	void EnterFieldref([NotNull] LogstashconfigParser.FieldrefContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.selector"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.fieldref"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelector([NotNull] LogstashconfigParser.SelectorContext context);
+	void ExitFieldref([NotNull] LogstashconfigParser.FieldrefContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.compare_expression"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.fieldref_element"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCompare_expression([NotNull] LogstashconfigParser.Compare_expressionContext context);
+	void EnterFieldref_element([NotNull] LogstashconfigParser.Fieldref_elementContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.compare_expression"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.fieldref_element"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCompare_expression([NotNull] LogstashconfigParser.Compare_expressionContext context);
+	void ExitFieldref_element([NotNull] LogstashconfigParser.Fieldref_elementContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.regexp_expression"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.array"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRegexp_expression([NotNull] LogstashconfigParser.Regexp_expressionContext context);
+	void EnterArray([NotNull] LogstashconfigParser.ArrayContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.regexp_expression"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.array"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRegexp_expression([NotNull] LogstashconfigParser.Regexp_expressionContext context);
+	void ExitArray([NotNull] LogstashconfigParser.ArrayContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.selector_element"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.array_element"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelector_element([NotNull] LogstashconfigParser.Selector_elementContext context);
+	void EnterArray_element([NotNull] LogstashconfigParser.Array_elementContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.selector_element"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.array_element"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelector_element([NotNull] LogstashconfigParser.Selector_elementContext context);
+	void ExitArray_element([NotNull] LogstashconfigParser.Array_elementContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.in_operator"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.hash"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIn_operator([NotNull] LogstashconfigParser.In_operatorContext context);
+	void EnterHash([NotNull] LogstashconfigParser.HashContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.in_operator"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.hash"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIn_operator([NotNull] LogstashconfigParser.In_operatorContext context);
+	void ExitHash([NotNull] LogstashconfigParser.HashContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.not_in_operator"/>.
+	/// Enter a parse tree produced by <see cref="LogstashconfigParser.hash_element"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNot_in_operator([NotNull] LogstashconfigParser.Not_in_operatorContext context);
+	void EnterHash_element([NotNull] LogstashconfigParser.Hash_elementContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.not_in_operator"/>.
+	/// Exit a parse tree produced by <see cref="LogstashconfigParser.hash_element"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNot_in_operator([NotNull] LogstashconfigParser.Not_in_operatorContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.method_call"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterMethod_call([NotNull] LogstashconfigParser.Method_callContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.method_call"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitMethod_call([NotNull] LogstashconfigParser.Method_callContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.regexp"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterRegexp([NotNull] LogstashconfigParser.RegexpContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.regexp"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitRegexp([NotNull] LogstashconfigParser.RegexpContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.compare_operator"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterCompare_operator([NotNull] LogstashconfigParser.Compare_operatorContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.compare_operator"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitCompare_operator([NotNull] LogstashconfigParser.Compare_operatorContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="LogstashconfigParser.regexp_operator"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterRegexp_operator([NotNull] LogstashconfigParser.Regexp_operatorContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="LogstashconfigParser.regexp_operator"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitRegexp_operator([NotNull] LogstashconfigParser.Regexp_operatorContext context);
+	void ExitHash_element([NotNull] LogstashconfigParser.Hash_elementContext context);
 }

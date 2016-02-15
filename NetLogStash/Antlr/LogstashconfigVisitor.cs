@@ -19,9 +19,6 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
-
-  
-
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using IToken = Antlr4.Runtime.IToken;
@@ -41,149 +38,53 @@ public interface ILogstashconfigVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitConfig([NotNull] LogstashconfigParser.ConfigContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.filler"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.stage_declaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitFiller([NotNull] LogstashconfigParser.FillerContext context);
+	Result VisitStage_declaration([NotNull] LogstashconfigParser.Stage_declarationContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.comment"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.stage_definition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitComment([NotNull] LogstashconfigParser.CommentContext context);
+	Result VisitStage_definition([NotNull] LogstashconfigParser.Stage_definitionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.plugin_section"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.plugin_declaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitPlugin_section([NotNull] LogstashconfigParser.Plugin_sectionContext context);
+	Result VisitPlugin_declaration([NotNull] LogstashconfigParser.Plugin_declarationContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.plugin_type"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.plugin_definition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitPlugin_type([NotNull] LogstashconfigParser.Plugin_typeContext context);
+	Result VisitPlugin_definition([NotNull] LogstashconfigParser.Plugin_definitionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.branch_or_plugin"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.plugin_attribute"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitBranch_or_plugin([NotNull] LogstashconfigParser.Branch_or_pluginContext context);
+	Result VisitPlugin_attribute([NotNull] LogstashconfigParser.Plugin_attributeContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.branch"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.plugin_attribute_value"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitBranch([NotNull] LogstashconfigParser.BranchContext context);
+	Result VisitPlugin_attribute_value([NotNull] LogstashconfigParser.Plugin_attribute_valueContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.plugin"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.stage_condition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitPlugin([NotNull] LogstashconfigParser.PluginContext context);
+	Result VisitStage_condition([NotNull] LogstashconfigParser.Stage_conditionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.attributes"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.logical_expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitAttributes([NotNull] LogstashconfigParser.AttributesContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.attribute"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitAttribute([NotNull] LogstashconfigParser.AttributeContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.r_if"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitR_if([NotNull] LogstashconfigParser.R_ifContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.else_if"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitElse_if([NotNull] LogstashconfigParser.Else_ifContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.r_else"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitR_else([NotNull] LogstashconfigParser.R_elseContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.name"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitName([NotNull] LogstashconfigParser.NameContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.string"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitString([NotNull] LogstashconfigParser.StringContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.single_quoted_string"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitSingle_quoted_string([NotNull] LogstashconfigParser.Single_quoted_stringContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.value"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitValue([NotNull] LogstashconfigParser.ValueContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.number"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitNumber([NotNull] LogstashconfigParser.NumberContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.condition"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitCondition([NotNull] LogstashconfigParser.ConditionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExpression([NotNull] LogstashconfigParser.ExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.array"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitArray([NotNull] LogstashconfigParser.ArrayContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.hash"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitHash([NotNull] LogstashconfigParser.HashContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.hashentries"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitHashentries([NotNull] LogstashconfigParser.HashentriesContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.hashentry"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitHashentry([NotNull] LogstashconfigParser.HashentryContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.boolean_operator"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitBoolean_operator([NotNull] LogstashconfigParser.Boolean_operatorContext context);
+	Result VisitLogical_expression([NotNull] LogstashconfigParser.Logical_expressionContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="LogstashconfigParser.negative_expression"/>.
 	/// </summary>
@@ -191,17 +92,23 @@ public interface ILogstashconfigVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitNegative_expression([NotNull] LogstashconfigParser.Negative_expressionContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.compare_expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCompare_expression([NotNull] LogstashconfigParser.Compare_expressionContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="LogstashconfigParser.in_expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitIn_expression([NotNull] LogstashconfigParser.In_expressionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.not_in_expression"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.match_expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitNot_in_expression([NotNull] LogstashconfigParser.Not_in_expressionContext context);
+	Result VisitMatch_expression([NotNull] LogstashconfigParser.Match_expressionContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="LogstashconfigParser.rvalue"/>.
 	/// </summary>
@@ -209,63 +116,39 @@ public interface ILogstashconfigVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitRvalue([NotNull] LogstashconfigParser.RvalueContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.selector"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.fieldref"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitSelector([NotNull] LogstashconfigParser.SelectorContext context);
+	Result VisitFieldref([NotNull] LogstashconfigParser.FieldrefContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.compare_expression"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.fieldref_element"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitCompare_expression([NotNull] LogstashconfigParser.Compare_expressionContext context);
+	Result VisitFieldref_element([NotNull] LogstashconfigParser.Fieldref_elementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.regexp_expression"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.array"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitRegexp_expression([NotNull] LogstashconfigParser.Regexp_expressionContext context);
+	Result VisitArray([NotNull] LogstashconfigParser.ArrayContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.selector_element"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.array_element"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitSelector_element([NotNull] LogstashconfigParser.Selector_elementContext context);
+	Result VisitArray_element([NotNull] LogstashconfigParser.Array_elementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.in_operator"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.hash"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitIn_operator([NotNull] LogstashconfigParser.In_operatorContext context);
+	Result VisitHash([NotNull] LogstashconfigParser.HashContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.not_in_operator"/>.
+	/// Visit a parse tree produced by <see cref="LogstashconfigParser.hash_element"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitNot_in_operator([NotNull] LogstashconfigParser.Not_in_operatorContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.method_call"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitMethod_call([NotNull] LogstashconfigParser.Method_callContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.regexp"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitRegexp([NotNull] LogstashconfigParser.RegexpContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.compare_operator"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitCompare_operator([NotNull] LogstashconfigParser.Compare_operatorContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="LogstashconfigParser.regexp_operator"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitRegexp_operator([NotNull] LogstashconfigParser.Regexp_operatorContext context);
+	Result VisitHash_element([NotNull] LogstashconfigParser.Hash_elementContext context);
 }
