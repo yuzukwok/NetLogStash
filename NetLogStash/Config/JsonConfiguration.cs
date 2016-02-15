@@ -45,7 +45,8 @@ namespace NetLogStash.Config
                 {
                     AddFilter(filter);
                 }
-            }            
+            }
+                      
             foreach (Plugin output in config.Plugins["output"])
             {
                 AddOutput(output);

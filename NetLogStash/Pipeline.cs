@@ -23,7 +23,7 @@ namespace NetLogStash
             outputs.ToList().ForEach(output => Subscribe(_outputSubscriptions, outputSource, output));
 
             // subscribe inputs
-            Subscribe(_inputSubscriptions, inputs.Merge(), input => Filter(filters, input));
+           // Subscribe(_inputSubscriptions, inputs.Merge(), input => Filter(filters, input));
         }
 
         public void Dispose()
