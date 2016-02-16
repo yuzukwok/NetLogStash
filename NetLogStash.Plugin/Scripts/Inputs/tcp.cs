@@ -1,4 +1,5 @@
-﻿using NetLogStash.Input;
+﻿//css_reference System.Reactive.Interfaces.dll
+using NetLogStash.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,10 @@ using NetLogStash.Config;
 using NetLogStash;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
+using NetLogStash.Util;
+using NetLogStash.Tcp;
+using System.Reactive.Linq;
+using System.Reactive;
 
 public class tcpInput : AbstractInput, IDisposable
 {
@@ -48,15 +52,24 @@ public class tcpInput : AbstractInput, IDisposable
 
     public void Dispose()
     {
-        //throw new NotImplementedException();
-        listener.Disconnect(false);
+        srv.Shutdown();
     }
+    public event EventHandler<StrEventArgs> Rev;
 
     public override IObservable<Event> Execute()
     {
-        return null;
+        return Observable.FromEventPattern<EventHandler<StrEventArgs>, StrEventArgs>(action => { Rev += action; }, 
+            action => { Rev -= action; })           
+           .SelectMany(ParserText);
     }
-    Socket listener;
+    AsyncTcpSocketServer srv;
+
+    IEnumerable<Event> ParserText(EventPattern<StrEventArgs> e)
+    {
+        Event item=new Event();
+        item.SetMember("str", e.EventArgs.Text);
+        return new List<Event>() { item };
+    }
     public override void Initialize(string typename, Dictionary<string, ParaItem> paras)
     {
         //config
@@ -68,92 +81,47 @@ public class tcpInput : AbstractInput, IDisposable
         {
             Host =paras["host"].Values.FirstOrDefault();
         }
-
-        Task.Factory.StartNew(() => { StartListening(); });
+        var dispatcher = new SimpleMessageDispatcher();
+        dispatcher.Rev += (o,e) => {
+            this.Rev(o, e);
+        };
+         srv = new AsyncTcpSocketServer(IPAddress.Parse(Host), Port, dispatcher, new AsyncTcpSocketServerConfiguration() { FrameBuilder = new LineBasedFrameBuilder(LineDelimiter.WINDOWS) });
+        srv.Listen();
         
-
     }
-
-    public  void StartListening()
+    public class StrEventArgs : EventArgs
     {
-        // Data buffer for incoming data.     
-        byte[] bytes = new Byte[1024];
-       
-        IPAddress ipAddress = IPAddress.Parse(Host);
-        IPEndPoint localEndPoint = new IPEndPoint(ipAddress, Port);
-        // Create a TCP/IP socket.     
-         listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        // Bind the socket to the local     
-        //endpoint and listen for incoming connections.     
-        try
+        public string Text { get; set; }
+    }
+    public class SimpleMessageDispatcher : IAsyncTcpSocketServerMessageDispatcher
+    {
+        public event EventHandler<StrEventArgs> Rev;
+        public async Task OnSessionStarted(AsyncTcpSocketSession session)
         {
-            listener.Bind(localEndPoint);
-            listener.Listen(100);
-            while (true)
-            {
-                // Set the event to nonsignaled state.     
-                acceptDone.Reset();
-                // Start an asynchronous socket to listen for connections.     
-                Console.WriteLine("begin accept");
-                listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
-                // Wait until a connection is made before continuing.     
-                acceptDone.WaitOne();
-            }
+           // Console.WriteLine(string.Format("TCP session {0} has connected {1}.", session.RemoteEndPoint, session));
+            await Task.CompletedTask;
         }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.ToString());
-        }
-       
-    }
-    // Thread signal.     
-    private static ManualResetEvent acceptDone = new ManualResetEvent(false);
-    //private static ManualResetEvent receiveDone = new ManualResetEvent(false);
-    void AcceptCallback(IAsyncResult iar)
-    {
-        acceptDone.Set();
-        Console.WriteLine("end accept,begin receive");
-        //还原传入的原始套接字
-        Socket socket = (Socket)iar.AsyncState;
-        //在原始套接字上调用EndAccept方法，返回新的套接字
-        Socket handler = socket.EndAccept(iar);
-        // Create the state object.     
-        StateObject state = new StateObject();
-        state.workSocket = handler;
-        handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
-        
-        //receiveDone.WaitOne();
-    }
-    public static void ReadCallback(IAsyncResult ar)
-    {
-        Console.WriteLine("end receive");
-        String content = String.Empty;
-        // Retrieve the state object and the handler socket     
-        // from the asynchronous state object.     
-        StateObject state = (StateObject)ar.AsyncState;
-        Socket handler = state.workSocket;
-        // Read data from the client socket.     
-        int bytesRead = handler.EndReceive(ar);
-        //receiveDone.Set();
-        if (bytesRead > 0)
-        {
-            // There might be more data, so store the data received so far.     
-            state.sb.Append(Encoding.ASCII.GetString(state.buffer, 0, bytesRead));
-            // Check for end-of-file tag. If it is not there, read     
-            // more data.     
-            content = state.sb.ToString();
-            if (content.IndexOf("\r\n") > -1)
-            {
-                // All the data has been read from the     
-                // client. Display it on the console.     
-                Console.WriteLine("Read {0} bytes from socket. \n Data : {1}", content.Length, content);
 
-            }
-            else
+        public async Task OnSessionDataReceived(AsyncTcpSocketSession session, byte[] data, int offset, int count)
+        {
+           
+
+            var text = Encoding.UTF8.GetString(data, offset, count);
+            Console.Write(string.Format("Client : {0} --> ", session.RemoteEndPoint));
+            Console.WriteLine(string.Format("{0}", text));
+            if (Rev != null)
             {
-                // Not all data received. Get more.     
-                handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
+                Rev(null, new StrEventArgs() {  Text=text});
             }
+            await session.SendAsync(Encoding.UTF8.GetBytes(text));
+
+           
+        }
+
+        public async Task OnSessionClosed(AsyncTcpSocketSession session)
+        {
+           // Console.WriteLine(string.Format("TCP session {0} has disconnected.", session));
+            await Task.CompletedTask;
         }
     }
 

@@ -139,7 +139,21 @@
     <Compile Include="Scripting.Extensions.cs" />
     <Compile Include="Scripting.native.cs" />
     <Compile Include="Scripts\string.cs" />
+    <Compile Include="Tcp\BufferDeflector.cs" />
+    <Compile Include="Tcp\BufferValidator.cs" />
+    <Compile Include="Tcp\Framing.cs" />
+    <Compile Include="Tcp\IFrameBuilder.cs" />
+    <Compile Include="Tcp\LineBasedFrameBuilder.cs" />
+    <Compile Include="Tcp\TcpSocketConnectionState.cs" />
     <Compile Include="Util\ArrayExtensions.cs" />
+    <Compile Include="Tcp\AsyncTcpSocketServer.cs" />
+    <Compile Include="Tcp\AsyncTcpSocketServerConfiguration.cs" />
+    <Compile Include="Tcp\AsyncTcpSocketSession.cs" />
+    <Compile Include="Tcp\GrowingByteBufferManager.cs" />
+    <Compile Include="Tcp\IAsyncTcpSocketServerMessageDispatcher.cs" />
+    <Compile Include="Tcp\IBufferManager.cs" />
+    <Compile Include="Tcp\InternalAsyncTcpSocketServerMessageDispatcherImplementation.cs" />
+    <Compile Include="Util\TplExtensions.cs" />
     <Compile Include="Util\TypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
