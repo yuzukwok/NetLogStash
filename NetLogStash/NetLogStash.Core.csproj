@@ -124,6 +124,8 @@
     <Compile Include="Exceptions\TypeConstructionException.cs" />
     <Compile Include="Filters\AbstractFilter.cs" />
     <Compile Include="Filters\ConfigurationFilter.cs" />
+    <Compile Include="Grok\GrokCollection.cs" />
+    <Compile Include="Grok\GrokPattern.cs" />
     <Compile Include="Input\AbstractInput.cs" />
     <Compile Include="Input\ConfigurationInput.cs" />
     <Compile Include="Interface\IFilter.cs" />
