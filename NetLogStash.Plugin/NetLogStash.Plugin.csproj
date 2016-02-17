@@ -63,10 +63,10 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Inputs\tcp.cs" />
+    <Compile Include="Scripts\Outputs\console.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\Filters\" />
-    <Folder Include="Scripts\Outputs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NetLogStash\NetLogStash.Core.csproj">

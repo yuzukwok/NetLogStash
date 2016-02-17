@@ -74,37 +74,10 @@ namespace NetLogStash.Config
         {
             ConfigurationOutput output = new ConfigurationOutput();
 
-           // output.Initialize(GetArgs((string)value.type, value.args));
+            output.Initialize(value.Name, value.Params);
             Outputs.Add(output);
         }
 
-        private string[] GetArgs(string v1, dynamic args)
-        {
-            List<string> argsList = new List<string>();
-            argsList.Add(v1);
-            if (args != null)
-            {
-                foreach (string value in args)
-                {
-                    argsList.Add(value);
-                }
-            }
-            return argsList.ToArray();
-        }
 
-        private string[] GetArgs(string v1, string v2, dynamic args)
-        {
-            List<string> argsList = new List<string>();
-            argsList.Add(v1);
-            argsList.Add(v2);
-            if (args != null)
-            {
-                foreach (string value in args)
-                {
-                    argsList.Add(value);
-                }
-            }
-            return argsList.ToArray();
-        }
     }
 }

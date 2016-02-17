@@ -66,6 +66,7 @@ public class tcpInput : AbstractInput, IDisposable
 
     IEnumerable<Event> ParserText(EventPattern<StrEventArgs> e)
     {
+       
         Event item=new Event();
         item.SetMember("str", e.EventArgs.Text);
         return new List<Event>() { item };
@@ -83,6 +84,7 @@ public class tcpInput : AbstractInput, IDisposable
         }
         var dispatcher = new SimpleMessageDispatcher();
         dispatcher.Rev += (o,e) => {
+           
             this.Rev(o, e);
         };
          srv = new AsyncTcpSocketServer(IPAddress.Parse(Host), Port, dispatcher, new AsyncTcpSocketServerConfiguration() { FrameBuilder = new LineBasedFrameBuilder(LineDelimiter.WINDOWS) });
@@ -111,6 +113,7 @@ public class tcpInput : AbstractInput, IDisposable
             Console.WriteLine(string.Format("{0}", text));
             if (Rev != null)
             {
+                
                 Rev(null, new StrEventArgs() {  Text=text});
             }
             await session.SendAsync(Encoding.UTF8.GetBytes(text));

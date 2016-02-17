@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,15 +18,19 @@ namespace NetLogStash
         {
             // create output source
             IObservable<T> outputSource = Observable.FromEventPattern<EventHandler<EventArgs>, EventArgs>(a => { _event += a; }, a => { _event -= a; })
-                .Select(e => e.EventArgs.Value);
+                .Select(outputevent);
 
             // subscribe outputs
             outputs.ToList().ForEach(output => Subscribe(_outputSubscriptions, outputSource, output));
 
             // subscribe inputs
-           // Subscribe(_inputSubscriptions, inputs.Merge(), input => Filter(filters, input));
+            Subscribe(_inputSubscriptions, inputs.Merge(), input => Filter(filters, input));
         }
 
+        T outputevent(EventPattern<EventArgs> e)
+        {
+            return e.EventArgs.Value;
+        }
         public void Dispose()
         {
             _inputSubscriptions.ForEach(s => { if (s != null) s.Dispose(); });

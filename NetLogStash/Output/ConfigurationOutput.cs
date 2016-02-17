@@ -19,9 +19,9 @@ namespace NetLogStash.Output
             _output.Execute(value);
         }
 
-        public override void Initialize(string name, Dictionary<string, ParaItem> para)
+        public override void Initialize(string typename, Dictionary<string, ParaItem> paras)
         {
-           // _output = args[0].ConstructOutput(args.SubArray(1));
+            _output = typename.ConstructOutput(typename, paras);
         }
 
         public override void Dispose()
