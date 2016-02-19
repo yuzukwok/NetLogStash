@@ -1,122 +1,152 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 //https://github.com/Beh01der/node-grok/blob/master/lib/index.js
 namespace NetLogStash.Grok
 {
     public class GrokCollection
     {
-        string subPatternsRegex = "%{[A-Z0-9_]+(?::[a-z0-9_]+)?}"; // %{subPattern} or %{subPattern:fieldName}
-        string nestedFieldNamesRegex = " ((?<([a-z0-9_]+)>)|(?:|(?>|(?!|(?<!|(|\\(|\\)|)|[|\\[|\\]|]";
-
-        public Hashtable Patterns { get; set; }
-
-        public Hashtable ResolvePattern(Hashtable patterns)
+        static  Regex subPatternsRegex =new Regex("%{[A-Z0-9_]+(?::[a-z0-9_]+)?}"); // %{subPattern} or %{subPattern:fieldName}
+       // static Regex nestedFieldNamesRegex =new Regex("((?<([a-z0-9_]+)>)|(?:|(?>|(?!|(?<!|(|\\(|\\)|)|[|\\[|\\]|]");
+        
+        static Hashtable Patterns { get; set; }
+        public GrokCollection()
         {
-            return null;
+            if (Patterns==null)
+            {
+                Patterns = new Hashtable();
+            }
+        }
+        public GrokPattern ResolvePattern(GrokPattern pattern)
+        {
+            pattern = resolveSubPatterns(pattern);
+            pattern = resolveFieldNames(pattern);
+            return pattern;
         }
         // TODO: support automatic type conversion (e.g., "%{NUMBER:duration:float}"; see: https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html)
-        public Hashtable resolveSubPatterns(GrokPattern pattern)
+        private GrokPattern resolveSubPatterns(GrokPattern pattern)
         {
-            //if (pattern==null) { return pattern; }
+            var express = pattern.Expression;
+           var subPatterns= subPatternsRegex.Matches(pattern.Expression);
 
-            //var expression = pattern.Expression;
-            //var subPatterns = expression.match(subPatternsRegex) || [];
+            foreach (Match item in subPatterns)
+            {  // matched is: %{subPatternName} or %{subPatternName:fieldName}
+                var matched = item.Value;
+                var subPatternName = matched.Substring(2, matched.Length - 3);
 
-            //subPatterns.forEach(function(matched) {
-            //    // matched is: %{subPatternName} or %{subPatternName:fieldName}
-            //    var subPatternName = matched.substr(2, matched.length - 3);
+                var elements = subPatternName.Split(':');
+                subPatternName = elements[0];
+                var fieldName = "";
+                if (elements.Length>1)
+                {
+                    fieldName    = elements[1];
+                }
+              
+               
+                if (!Patterns.ContainsKey(subPatternName))
+                {
+                    throw new Exception("不存在模式");
+                }
+                var subPattern =(GrokPattern) Patterns[subPatternName];
 
-            //    var elements = subPatternName.split(':');
-            //    subPatternName = elements[0];
-            //    var fieldName = elements[1];
-
-            //    var subPattern = patterns.get(subPatternName);
-            //    if (!subPattern)
-            //    {
-            //        console.error('Error: pattern "' + subPatternName + '" not found!');
-            //        return;
-            //    }
-
-            //    if (!subPattern.resolved)
-            //    {
-            //        resolvePattern(subPattern);
-            //    }
-
-            //    if (fieldName)
-            //    {
-            //        expression = expression.replace(matched, '(?<' + fieldName + '>' + subPattern.resolved + ')');
-            //    }
-            //    else {
-            //        expression = expression.replace(matched, subPattern.resolved);
-            //    }
-            //});
-
-            //pattern.resolved = expression;
+                if (string.IsNullOrEmpty(subPattern.Resolved))
+                {
+                    ResolvePattern(subPattern);
+                }
+                if (!string.IsNullOrEmpty(fieldName))
+                {
+                    express = express.Replace(matched, "(?<" + fieldName + ">" + subPattern.Resolved + ")");
+                }
+                else {
+                    express = express.Replace(matched, subPattern.Resolved);
+                }
+            }
+            pattern.Resolved = express;
             return pattern;
         }
 
         // create mapping table for the fieldNames to capture
-        public GrokPattern resolveFieldNames(GrokPattern pattern)
+        private GrokPattern resolveFieldNames(GrokPattern pattern)
         {
-            //if (pattern==null) { return null; }
-
+          
             //var nestLevel = 0;
             //var inRangeDef = 0;
-            //var matched;
-            //while ((matched = nestedFieldNamesRegex.exec(pattern.resolved)) !== null)
-            //{
-            //    switch (matched[0])
+            //var matched="";
+            //var matches=nestedFieldNamesRegex.Matches(pattern.Resolved);
+            //matched = matches[0].Value;
+            //    switch (matched[0].ToString())
             //    {
-            //        case '(': { if (!inRangeDef) { ++nestLevel; pattern.fields.push(null); } break; }
-            //        case '\\(': break; // can be ignored
-            //        case '\\)': break; // can be ignored
-            //        case ')': { if (!inRangeDef) { --nestLevel; } break; }
-            //        case '[': { ++inRangeDef; break; }
-            //        case '\\[': break; // can be ignored
-            //        case '\\]': break; // can be ignored
-            //        case ']': { --inRangeDef; break; }
-            //        case '(?:':  // fallthrough                              // group not captured
-            //        case '(?>':  // fallthrough                              // atomic group
-            //        case '(?!':  // fallthrough                              // negative look-ahead
-            //        case '(?<!': { if (!inRangeDef) { ++nestLevel; } break; } // negative look-behind
-            //        default: { ++nestLevel; pattern.fields.push(matched[2]); break; }
+            //        case "(": { if (inRangeDef>0) { ++nestLevel; pattern.Fields.Add(null); } break; }
+            //        case "\\(": break; // can be ignored
+            //        case "\\)": break; // can be ignored
+            //        case ")": { if (inRangeDef>0) { --nestLevel; } break; }
+            //        case "[": { ++inRangeDef; break; }
+            //        case "\\[": break; // can be ignored
+            //        case "\\]": break; // can be ignored
+            //        case "]": { --inRangeDef; break; }
+            //        case "(?:":  // fallthrough                              // group not captured
+            //        case "(?>":  // fallthrough                              // atomic group
+            //        case "(?!":  // fallthrough                              // negative look-ahead
+            //        case "(?<!": { if (inRangeDef>0) { ++nestLevel; } break; } // negative look-behind
+            //        default: { ++nestLevel; pattern.Fields.Add(matched[2].ToString()); break; }
             //    }
-            //}
+            
 
             return pattern;
         }
 
-        public void createPattern(string expression,string  id)
+        public GrokPattern createPattern(string expression,string  id="")
         {
-            //id = id || 'pattern-' + patterns.length;
-            //if (patterns.has(id))
-            //{
-            //    console.error('Error: pattern with id %s already exists', id);
-            //}
-            //else {
-            //    var pattern = new GrokPattern(expression, id);
-            //    return resolvePattern(pattern);
-            //}
+            var pid = id;
+            if (string.IsNullOrEmpty(pid))
+            {
+                pid = "pattern-" + Patterns.Count;
+            }
+            if (Patterns.Contains(pid))
+            {
+                throw new Exception("已存在的模式id");
+            }
+            else
+            {
+                GrokPattern pattern = new GrokPattern() { Id = pid, Expression = expression };
+                return ResolvePattern(pattern);
+            }
+           
         }
 
-        public void load (string filePath)
+        public static void Load (string filePath)
         {
-            //var patternLineRegex = / ([A - Z0 - 9_] +)\s + (.+) /;
+            if (Patterns == null)
+            {
+                Patterns = new Hashtable();
+            }
+            var files= Directory.GetFiles(filePath);
+            foreach (var file in files)
+            {
+                var lines = File.ReadAllLines(file);
+                foreach (var item in lines)
+                {
+                    if (!item.StartsWith("#")&&!item.StartsWith(" ")&&!string.IsNullOrEmpty(item))
+                    {
+                        var id = item.Split(' ')[0];
+                    var express = item.Substring(item.IndexOf(' '));
+                    var pattern = new GrokPattern() { Expression = express, Id = id };
+                        if (!Patterns.ContainsKey(pattern.Id))
+                        {
+                            Patterns.Add(pattern.Id, pattern);
+                        }
+                   
+                    }
+                }
+                
+            }
 
-            //lineReader.eachLine(filePath, function(line) {
-            //    var elements = patternLineRegex.exec(line);
-            //    if (elements && elements.length > 2)
-            //    {
-            //        var pattern = new GrokPattern(elements[2], elements[1]);
-            //        patterns.set(pattern.id, pattern);
-            //    }
-            //}).then(function() {
-            //    next();
-            //});
+         
         }
 
        
